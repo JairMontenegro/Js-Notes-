@@ -50,11 +50,11 @@ se diferencia entre el .test() en que ya no devuelve true sino la plabra que bus
         /*Nos devolvera por consola el  ["conseguir"]*/
 
 
-/* BANDERA G o FLAG G 
+/* BANDERA G o FLAG (G) 
 Nos permite buscar o extraer un patron que se repite mas de una vez su uso es igual al flag i*/
 
         let myStringFlagG = "Jair is Learning REACT para Conseguir TRABAJO, ya sea trabajo front end, trabajo como back pero no trabajo como testing"
-        let myRegexFLagG =  /ltrabajo/gi // recuerdar el camel sensitive por eso esta la flag i ahi tambien. 
+        let myRegexFLagG =  /ltrabajo/gi // recordar el camel sensitive por eso esta la flag i ahi tambien. 
         let resultFlagG = myString.match(myRegex)
         /*en consola nos va a mostrar ["trabajo", "trabajo", "trabajo", "trabajo"]*/
 
@@ -125,20 +125,20 @@ Crearemos una sola expresión regular que coincida con todos los caracteres que 
 teniendo por resultado en la cosola que se muestre el sigueinte arreglo  [ ' ', 'b', 'l', 'n', 'd', ' ', 'm', 'c', '.' ]  */
 
 
-/*COINCIDIR CARACTERES QUE APARECEN UNA O MAS VECES. */
+/*COINCIDIR CARACTERES QUE APARECEN UNA O MAS VECES. (+) */
 
 /*A veces necesitarmoes hacer coincidir caracteres que estan seguidos y esto es posible gracias al caracter (+)
-cabe resaltar que el caracter que queremos hacer coincidir debe estar presente consecutivamente. 
+cabe resaltar que el caracter que queremos hacer coincidir debe estar presente consecutivamente.         
 abc regex = /a+/g  encontraria una sola vez a y devolveria por consola ["a"]
 aabc regex = /a+/g  encontraria una sola vez a y devolveria por consola ["aa"]
 pero en 
 abac regex = /a+/g  encontraria dos veces a y devolveria por consola ["a","a"] porque hay un caracter en medio de ellos 
 */
 
-/*COINCIDIR CARACTERES QUE APARECEN  0 O MAS VECES. */
+/*COINCIDIR CARACTERES QUE APARECEN  0 O MAS VECES. (*) */
 /*De la misma forma que vimmos atenriormente podemos hacer coincidir caracteres que apareezcan 0 o mas veces usando ahora el 
 caracter  (*). Ejemplo de esto Aaaaaaaaarrrrg usaremos la regex siguiente: 
-regex =  /*Aa/ pñor consola saldra [ 'Aaaaaaaaaaaaaaaa',]
+regex =  /*Aa/ por consola saldra [ 'Aaaaaaaaaaaaaaaa',]
 */
 
 /*EXPRESIONES REGULARES CODICIOSAS  Y PEREZOSAS GRADY  LAZY  caracter.(?)  */
@@ -164,8 +164,69 @@ Corregir la expresión regular /<.*>/ para que devuelva la etiqueta HTML <h1> y 
 
 De este modo lo podemos usar para comporbar o buscar patrones al principio de una cadena. 
 ejemplo 
-Usaremos  el carácter caret en una expresión para buscar Cal solo al principio de la cadena rickyAndCal.
+Usaremos  el carácter caret en una expresión para buscar Cal solo al principio de la cadena rickyAndCal.*/
+                let rickyAndCal = "Cal and Ricky both like racing.";
+                let calRegex = /^Cal/;
+                let resultad = calRegex.test(rickyAndCal);
+                console.log(resultad) // true 
 
-*/
+/*COINCIDIR PATRONES DE CADENA FINAL caracter de ancla($)*/
+
+/*Podemos hacer coincidir patrones de la misma manera que en el ejemplo anterior, 
+pero al final usando el caracter de signo de dolar caracter de ancla ($) sigamos ocn el ejemplo anterior */
+                let rickyAndCal2 = "Cal and Ricky both like racing.";
+                let calRegex2 = /racing$/;
+                let resultad2 = calRegex2.test(rickyAndCal2);
+                console.log(resultad2) // true 
+
+
+/*CLASES DE CARACTERES ABREVIADOS*/
+
+/*COINCIDIR TODAS LAS LETRAS Y LOS NUMEROS (\w)  equivalente a  [A-Za-z0-9_]*/
+
+/* 
+Podemos hacer coincidir todas las letras del alfabbeto y numeros con el siguiente atajo ( \w ) ejemplo: 
+Utilizaremos \w para contar el número de caracteres alfanuméricos en varias citas y cadenas.*/
+                let quoteSample5 = "The five boxing wizards jump quickly.";
+                let alphabetRegexV2 = /\w/g; // recordar repeticiones 
+                let result6 = quoteSample5.match(alphabetRegexV2).length;
+                console.log(result6) // 31
+
+
+
+
+/*Tambien podemos hacer coincidir todo menos las letras y los numeros (\W) nota la mayuscula que seria 
+equivalente a  [^A-Za-z0-9_]*/
+
+                let quoteSample6 = "The five boxing wizards jump quickly.";
+                let alphabetRegexV3 = /\W/g; // recordar repeticiones 
+                let result7 = quoteSample6.match(alphabetRegexV3).length;
+                console.log(result7) // los espacios y el punto recuerda la flag g 
+
+/*Tambien podemos coincidir o buscar todos los numeros de un string  con \d  que es equivalente a [0-9] ejemplo */
+
+                let movieName = "2001: A Space Odyssey";
+                let numRegex = /\d/g; // 
+                let result8 = movieName.match(numRegex).length;
+                console.log(movieName.match(numRegex)) // ['2','0', '0', '1']   
+                console.log(result8)  // 4
+
+
+/*Tambien podemos coincidir o buscar todos los NO numeros de un string con \D que es equivalente a [^0-9] ejemplo */   
+
+/*Usando el mismo ejemplo anterior */
+
+                let movieName2 = "2001: A Space Odyssey";
+                let numRegex2 = /\D/g; 
+                let result9 = movieName.match(numRegex2).length;
+                console.log(movieName.match(numRegex2)) // [ ':',' ','A',' ','S','p','a','c','e',' ','O','d','y','s','s','e','y' ]
+                console.log(result9)  //17
+
+/*Tambien podemos coincidir o buscar todos los espacios en blanco usando \s no solo hace coincidir los espacios en blanco si no los
+carriage return [ \r\t\f\n\v]*/ 
+
+                let sample = "Whitespace is important in separating words";
+                let countWhiteSpace = /\s/g; 
+                let result10 = sample.match(countWhiteSpace);
+
 /**/
-
