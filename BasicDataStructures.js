@@ -122,9 +122,9 @@ CARACTERISTICAS.
 */      function copyMachine(arr, num) {
         let newArr = [];
         while (num >= 1) {
-            newArr.push([...arr]) // estamos empujando por cada iteracion del bucle while la cantidad de veces el parametro arr 
-            // pasado por el parametro num. 
-          num--;
+        newArr.push([...arr]) // estamos empujando por cada iteracion del bucle while la cantidad de veces el parametro arr 
+                // pasado por el parametro num. 
+        num--;
         }
         return newArr;
       }
