@@ -51,6 +51,8 @@ let complexArray = [
 
 /* 
 Array.splice(). 
+
+
 CARACTERISTICAS 
         -Toma hasta tres parametros enteros (int).
         -Los primeros dos parametros representan : 
@@ -81,6 +83,55 @@ function htmlColorNames(arr) {
         // el resultado de esto por consola seria [ 'DarkSalmon','BlanchedAlmond','LavenderBlush','PaleTurquoise','FireBrick' ]
 
 
-/* */
+/* Array.slice(). 
+
+En lugar de modificar un arreglo, extrae/copia  un numero indeterminado de elementos dejando intacto el arreglo al que llama. 
+
+CARACTERISTICAS. 
+
+                -Toma dos parametros. 
+                                - En el primero indicamos el elemento de inicio que queremos copiar/extraer. 
+                                - En el segundo  parametro, es donde se deteiene la extracion SIN INCLUIR EL ELEMENTO DE ESE INDICE.
+        EJEMPLO: 
+        Hemos definido una función, forecast, que toma un arreglo como argumento. Modifica la función usando slice() para extraer información del arreglo de argumentos
+        y devuelve un nuevo arreglo que contenga los elementos warm y sunny.*/
+        function forecast(arr) {
+                // Cambia solo el código debajo de esta línea
+        let newArray = arr.slice(2 , 4 )
+                return newArray;
+        }
+        
+        // Cambia solo el código encima de esta línea
+        console.log(forecast(['cold', 'rainy', 'warm', 'sunny', 'cool', 'thunderstorms']));
+
+/*NOTA IMPORTANTE 
+
+        Gracias a Es6 podemos copiar un arreglo con una sintaxys mas sencilla, con el operador spread (...) un ejemplo de esto 
+        con el mismo anterior seria asi 
+*/
+        let forecast1 = ['cold', 'rainy', 'warm', 'sunny', 'cool', 'thunderstorms']
+        let newArray = [...forecast1] // y la consola nos mostraria la copia del arreglo 
+
+        // EJEMPLO DOS SPREAD OPERATOR
+/* 
+        Hemos definido una función, copyMachine que toma arr (un arreglo) y num (un número) 
+        como argumentos.  Se supone que la función devuelve un nuevo arreglo compuesto por 
+        num copias de arr. Hemos hecho la mayor parte del trabajo por ti, pero aún no funciona 
+        del todo bien. Modifica la función usando sintaxis de propagación para que funcione 
+        correctamente
+*/      function copyMachine(arr, num) {
+        let newArr = [];
+        while (num >= 1) {
+            newArr.push([...arr]) // estamos empujando por cada iteracion del bucle while la cantidad de veces el parametro arr 
+            // pasado por el parametro num. 
+          num--;
+        }
+        return newArr;
+      }
+      
+      console.log(copyMachine([true, false, true],2));
+
+
+
 /* */
 /* */
