@@ -127,9 +127,182 @@ CARACTERISTICAS.
         num--;
         }
         return newArr;
-      }
-      
-      console.log(copyMachine([true, false, true],2));
+        }
+        console.log(copyMachine([true, false, true],2));
+        
+        /*Cabe resaltar que con el operador de propagacion podemos insertar todos los elementos de un arreglo en cualquier lugar 
+        arreglo ejemplo.
+        Hemos definido una función spreadOut que devuelve la variable sentence. Modifica la función usando el operador de propagación 
+        para que devuelva el arreglo ['learning', 'to', 'code', 'is', 'fun'].
+      */
+        function spreadOut() {
+                let fragment = ['to', 'code'];
+                let sentence =  ['learning', ...fragment, 'is', 'fun']; 
+                return sentence;
+        }
+        console.log(spreadOut()); // Nos mostrara por la consola. [ 'learning', 'to', 'code', 'is', 'fun' ]. 
+
+
+        /*                                              indexOF                                                         */
+
+        /* Ya que los arreglos son mutables, no se puede garantizar donde estara un dato en concreto en un arreglo determinado 
+        o si ese arreglo sigue exsitiendo.
+        para comprobar rapida y facilmente todas estas cosas existe   INDEXOF().
+        
+        CARACTERISTICAS: 
+                        -Toma un elemento como parametro y cuando lo llama devuelve el indice donde se encuentra
+                        -Devuelve -1 si el elemento no existe en el arreglo
+        EJEMPLO 
+        Hemos definido una función, quickCheck, que toma un arreglo y un elemento como argumentos. 
+        Modifica la función usando indexOf() para que devuelva true si el elemento pasado existe en el arreglo,
+        y false si no existe.*/
+        
+        function quickCheck(arr, elem) {
+                return (arr.indexOf(elem) >= 0 ? true : false)
+                }
+                console.log(quickCheck(['squash', 'onions', 'shallots'], 'squash')); // nos devolvera una true puesto que esta 
+                // en el indice 0 lo cual es igual a nuestra condicion, si fuese - 1 nos mostraria false, y aqui estoy usando 
+                // "Conditional Ternary"
+
+
+
+                /*              REPASO DEL BUCLE FOR PARA ITERAR POR ARREGLOS                     */
+
+/*Hemos definido una función, filteredArray, que toma arr, un arreglo anidado, y elem como argumentos, y devuelve un nuevo arreglo.
+elem representa un elemento que puede o no estar presente en uno o más de los arreglos anidados dentro de arr. 
+Modifica la función, usando un bucle for, para que devuelva una versión filtrada del 
+arreglo pasado de forma que cualquier arreglo anidado dentro de arr que contenga elem haya sido eliminado. */
+
+
+
+        //EJEMPLO 
+        function filteredArray(arr, elem) {
+                let newArr = [];
+                for (let i = 0; i < arr.length; i++) { //estamos iterando por cada uno de los indices de arr uno en uno 
+                if (arr[i].indexOf(elem) == -1) { // comprobamos la existencia de elem con indexOf (linea 146) 
+                newArr.push(arr[i]);  // si el numero existe vamos a actualizar newArr incorperando ese sub arr 
+                }
+        }
+                return newArr
+        } 
+console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3)); // mostraria un arreglo vacio ya que todos tienen 3
+
+
+
+/* REPASAR OBJETOS CLAVE VALOR  COMO ACCEDER CON DOT NOTATION O BRAKET NOTATION Y COMPROBAR SI EXISTEN CLAVES EN UN OBJETO*/
+
+/*                                      ITERAR A TRAVES DE LAS CLAVES DE UN BOJETO CON  FOR IN                          */
+
+
+
+/*  Se puede hacer con for in             
+                                -Una caracteristica importante es que los objetos NO MANTIENEN UN ORDEN para las claves como lo hacen 
+                                los arreglos. La posicion de una clave o el orden en que aparece es irrelevante cuando se accede a ella. 
+
+        for (let <<declara variable>> in << nombre del objeto>>) {// iterara por cada clave del objeto 
+                y aqui el codigo que queremos ejectuar para cada iteracion 
+        }
+
+        EJEMPLO 
+        Hemos definido una función countOnline que acepta un argumento (usersObj).
+        Utiliza una sentencia for...in dentro de esta función para iterar sobre el objeto usuarios
+        (users) pasado a la función y devuelve el número de usuarios cuya propiedad online esté establecida 
+        como true. A continuación se muestra un ejemplo de un objeto usuario que podría pasarse a countOnline.
+        Cada usuario tendrá una propiedad online con un valor true o false.
+
+
+*/
+const users = {
+        Alan: {
+                online: false
+        },
+        Jeff: {
+                online: true
+        },
+        Sarah: {
+                online: false
+        }
+}
+                function countOnline(usersObj) {
+                let result = 0 // declaramos e inicializamos una variable en 0 
+                for (let user in usersObj){  // iteramos a traves del objeto con for in 
+                if(usersObj[user]["online"] === true){  // el parametro pasado la funcion, coincide con un nombre de la variable user
+                        // y a su vez este user tiene como valor en la clave online en true. 
+                result++; // vamos a actualizar la variable result por cada vez que esto suceda. 
+                }
+                }
+                return result // retornamos esa nueva variable modificada y  en este caso nos daria 1 que seria yeff 
+                }
+                console.log(countOnline(users));
+
+
+/*                                              Object.keys()                                                                 */
+
+
+
+
+/*Con este metodo podemos obtener todos las claves almacenandas en un objeto pasandolo como parametro y nos las va a devolver
+en  un arreglo  de cadenas que representan cada propiedad del objeto.  
+                EJEMPLO MY FISH. 
+Termina de escribir la función getArrayOfUsers para que devuelva un arreglo que contenga todas 
+las propiedades del objeto que recibe como argumento.
+*/
+
+        let users2 = { // SE EXPLICA POR SI SOLO. 
+        Alan: {
+                age: 27,
+                online: false
+        },
+        Jeff: {
+                age: 32,
+                online: true
+        },
+        Sarah: {
+                age: 48,
+                online: false
+        },
+        Ryan: {
+                age: 19,
+                online: true
+        }
+        };
+                        function getArrayOfUsers(obj) {
+                        }
+                console.log(getArrayOfUsers(users2)); //[ 'Alan', 'Jeff', 'Sarah', 'Ryan' ]
+
+        /* EJERCICIO DE ESTRUCTURA DE DATOS */
+
+        /*Echa un vistazo al objeto que hemos proporcionado abajo. El objeto user contiene tres claves. 
+        La clave data contiene cinco claves, una de las cuales contiene un arreglo de friends. A partir de esto, 
+        puedes ver lo flexibles que son los objetos como estructuras de datos. Hemos empezado a escribir una función addFriend. T
+        ermina de escribirla para que tome un objeto user y agregue el nombre del argumento friend al arreglo 
+        almacenado en user.data.friends y devuelva ese arreglo. */
+
+        let user = {
+                name: 'Kenneth',
+                age: 28,
+                data: {
+                username: 'kennethCodesAllDay',
+                joinDate: 'March 26, 2016',
+                organization: 'freeCodeCamp',
+                friends: [
+                        'Sam',
+                        'Kira',
+                        'Tomo'
+                        ],
+                        location: {
+                                city: 'San Francisco',
+                                state: 'CA',
+                                country: 'USA'
+                        }
+                }
+        };
+                function addFriend(userObj, friend) {
+                userObj["data"]["friends"].push(friend)
+                return userObj["data"]["friends"] 
+                }
+                console.log(addFriend(user, 'Pete'));
+
 
 
 
