@@ -48,5 +48,45 @@ function reverseString(str) {
             un separador que pasemos como parametro, si el array tiene un solo item devolvera ese item sin usar separador. 
 
 */
+
+
+/*                                                      EJERCICIO NUMERO 3                                                 */
+
+
+/* Factoriza un número
+
+Devuelve el factorial del entero proporcionado.
+
+Si el número entero es representado con la letra n, un factorial es el producto de todos 
+los enteros positivos menores o iguales a n.
+
+Los factoriales suelen representarse con la abreviatura n!
+
+Por ejemplo: 5! = 1 * 2 * 3 * 4 * 5 = 120
+
+Sólo se proporcionarán a la función los enteros mayores o iguales a cero.
+*/
+
+//Este es un ejericicio muy basico y muy bueno para explicar el concepto de recursividad. 
+// en palabras criollas, y con poco tecnisismo es basicamente una funcion que se llama a si misma(recursiva) en el cuerpo de esa
+// funcion, estableciendo un caso base como punto final de la funcion. Mira el ejemplo 
+
+function factorialize(num) {
+    if (num <= 1){  // caso base basicamente le estamos diciendo que cuando el factor llegue a 1 pues retorene uno. 
+        return 1 
+    } else {
+      return factorialize(num - 1) * num //aqui estamos llamando a la funcion de nuevo en si misma a esto se le conoce como recursividad.
+                                        //  donde numde l esta siendo multiplicado por n -1 
+    }
+    }
+  let factor = factorialize(5); // esto dara 120 
+console.log(factor)
+
+
+/*                                                      EJERCICIO NUMERO 3                                                 */
+
+
+
+/* */
 /* */
 /* */

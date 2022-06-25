@@ -304,6 +304,7 @@ las propiedades del objeto que recibe como argumento.
                 console.log(addFriend(user, 'Pete'));
 
 
+                /* */
 
 
 /* */
