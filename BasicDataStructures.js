@@ -272,7 +272,7 @@ las propiedades del objeto que recibe como argumento.
 
         /* EJERCICIO DE ESTRUCTURA DE DATOS */
 
-        /*Echa un vistazo al objeto que hemos proporcionado abajo. El objeto user contiene tres claves. 
+        /*Hecha un vistazo al objeto que hemos proporcionado abajo. El objeto user contiene tres claves. 
         La clave data contiene cinco claves, una de las cuales contiene un arreglo de friends. A partir de esto, 
         puedes ver lo flexibles que son los objetos como estructuras de datos. Hemos empezado a escribir una función addFriend. T
         ermina de escribirla para que tome un objeto user y agregue el nombre del argumento friend al arreglo 
