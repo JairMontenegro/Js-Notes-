@@ -282,7 +282,7 @@ LOOKAHEAD : patrones que le indican a js que busque por anticipado para verifica
 
 
 LOOKAHEAD POSITIVO (?=patron): buscara para asgurarse que el elemento este en el patron de busqueda pero no lo coincidira.
-LOOKAHEAD POSITIVO (?!patron): buscara para asgurarse que el elemento NO este en el patron de busqueda pero no lo coincidira, devolviendo el patron si se 
+LOOKAHEAD NEGATIVO (?!patron): buscara para asgurarse que el elemento NO este en el patron de busqueda pero no lo coincidira, devolviendo el patron si se 
 devuelve si la parte del lookhaead negativo no esta prestente. 
 
 */
@@ -312,13 +312,13 @@ SOLUICION  :
 /*GRUPOS DE CAPTURA*/
 
 /*Se usan para capturar el patron de expresion mediante el uso de parentecis. si fuese una palabra con caracteres alfa numericos seria (\w+)
-la subacadena que coincide con el grupo de busqueda se guarda en una variable temporal a la que podemos acceder dentro de la misma regex 
+la subacadena que coincide con el grupo de busqueda se guarda en una "variable" temporal a la que podemos acceder dentro de la misma regex 
 usando una barra invertida y dentro del GRUPO DE CAPTURA. EJ: (\w+)\1, estos grupos se enumeran de izquierda a derecha emepzando por el 1
 EJEMPLO 
 Utiliza los grupos de captura en reRegex para que coincida con una cadena que conste sólo del mismo número repetido exactamente tres veces separado por espacios.
 */
                 let repeatNum = "42 42 42";
-                let reRegex = /^(\d+)\s\1\s\1$/; // aqui estamos capturando 1 grupo y lo estamos reutliziando como "variable en las otras comprobaciones"
+                let reRegex = /^(\d+)\s\1\s\1$/; // aqui estamos capturando 1 grupo y lo estamos reutliziando como "variable" en las otras comprobaciones"
                 let result19 = reRegex.test(repeatNum);
 
 

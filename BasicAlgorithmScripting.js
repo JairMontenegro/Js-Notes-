@@ -1,4 +1,4 @@
-/*   16 EJERCICIOS EXPLICADOS DE PROGRAMACION DE ALGORITMOS BASICOS                         */
+/*   16 EJERCICIOS EXPLICADOS DE PROGRAMACION DE ALGORI   MOS BASICOS                         */
 
 
 
@@ -192,6 +192,97 @@ function repeatStringNumTimes(str, num) {
   console.log(resu) // "abcabcabc"
 
 
+/*                                                      EJERCICIO NUMERO 8                                                  */
+
+
+  /* 
+Recorta una cadena (primer argumento) si es más larga que la longitud máxima proporcionada (segundo argumento). 
+Devuelve la cadena recortada con un ... al final.
+*/
+function truncateString(str, num) {
+  return num >= str.length ? str : str.substring(0,num) + '...'
+  }
+  
+  console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8))// A-tisket...;
+
+
+
+
+  /*                                                      EJERCICIO NUMERO 9                                                 */
+
+/* Crea una función que recorra un arreglo arr y devuelva el primer elemento que pase un "detector de verdad".
+Esto significa que dado un elemento x, el "detector de verdad" es pasado si func(x) es true.  Si ningún elemento pasa
+la prueba. la función debería devolver undefined*/
+
+function findElement(arr, func) {
+  let num = 0;   // inicalizamos num. 
+  for(let i = 0; i < arr.length; i++ ){ // iteramos por cada una de las poisiciones del parametro arr 
+  num = arr[i] // actualizamos num 
+  if (func(num)){// establecemos num pasado a la funcion para evaluar lo que nos piden cuando la funcion sea llamada. 
+  return num 
+    }
+  } // si no cumple requisito automaticamente nos va a dar undefined
+
+
+}
+
+console.log(findElement([1, 2, 3, 4], num => num % 2 === 0));
+
+
+
+  /*                                                      EJERCICIO NUMERO 9                                                 */
+
+    
+  /*Comprueba si el valor está clasificado como booleano primitivo. Devuelve true o false.
+  Booleanos primitivos son true y false. */
+
+  function booWho(bool) {
+    return typeof bool === "boolean";  // typeof nos ayuda a ver que tipo de dato primitivo tenemos  
+  } 
+  console.log(booWho(true)); // true 
+  
+  /*                                                      EJERCICIO NUMERO 10                                                */
+
+  
+  /*Devuelve la cadena proporcionada con la primera letra de cada palabra en mayúsculas. 
+Asegúrate de que el resto de la palabra esté en minúsculas.
+Como propósito de este ejercicio, debes también usar mayúsculas conectando palabras como the y of. */
+
+function titleCase(str) {
+  let newArray = []  // definimos un nuevo arreglo 
+  let arraySplit = str.split(" ") //convertimos el string pasado la funcion  en un array separado por comas. 
+  for (let i = 0; i < arraySplit.length; i++){  //iteramos nueva posicion del array 
+    newArray[i] = arraySplit[i][0].toUpperCase() + 
+    arraySplit[i].slice(1).toLowerCase() /* varias cosas suceden aqui a la vez,:
+                                          1) Estamos actualizando nuestro arreglo, con cada iteracion y por cada de de esta 
+                                              vamos a accieder al primer indice de cada elemento del arreglo
+                                          2) Lo pasamos a mayuculas <<toUpperCase()>> 
+                                          3) Lo concatenamos con : 
+                                                                3,1) cada iteracion con el resto de el elemnto usando slice desde el
+                                                                      indice uno
+                                                                3,2) El resto lo convertimos en minuscula por si hay alguna otro 
+                                                                elemento que tenga una mayuscula
+    */
+  }
+  return newArray.join(" ");// lo convertimos a string 
+}
+
+let test = titleCase("I'm a little tea pot");
+
+console.log(test)
+
+/*                                                      EJERCICIO NUMERO 11                                               */
+
+
+
+/* Cortar y rebanar
+Tienes dos arreglos y un índice.
+
+Copia cada elemento del primer arreglo en el segundo arreglo, en orden.
+
+Comienza insertando elementos en el índice n del segundo arreglo.
+
+Devuelve el arreglo resultante. Los arreglos de entrada deben permanecer iguales luego de que se ejecute la función. */
 
 
 

@@ -191,7 +191,7 @@ console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3)); 
 
 /* REPASAR OBJETOS CLAVE VALOR  COMO ACCEDER CON DOT NOTATION O BRAKET NOTATION Y COMPROBAR SI EXISTEN CLAVES EN UN OBJETO*/
 
-/*                                      ITERAR A TRAVES DE LAS CLAVES DE UN BOJETO CON  FOR IN                          */
+/*                                      ITERAR A TRAVES DE LAS CLAVES DE UN OBJETO CON  FOR IN                          */
 
 
 
@@ -291,9 +291,9 @@ las propiedades del objeto que recibe como argumento.
                         'Tomo'
                         ],
                         location: {
-                                city: 'San Francisco',
-                                state: 'CA',
-                                country: 'USA'
+                        city: 'San Francisco',
+                        state: 'CA',
+                        country: 'USA'
                         }
                 }
         };
