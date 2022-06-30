@@ -286,7 +286,38 @@ Devuelve el arreglo resultante. Los arreglos de entrada deben permanecer iguales
 
 
 
-/* */
+/* Conozco dos maneras de hacerlo con estos apuntes la primera es iterar y la segunda es solo metodos
+PRIMERA  */
+function frankenSplice(arr1, arr2, n) {
+  
+  let newArray = arr2.slice(0) // extraemos / copiamos el arreglo y lo almacenamos en una nueva variable 
+
+  for (let i = 0; i <arr1.length; i++){ //iteramos por el arreglo que tenemos que mutar 
+    newArray.splice(n, 0, arr1[i]) // con splice como pirmer arguemto usamos el parametro de la funcion n, a 0  
+                                    // y como tercero agregamos los indices de la iteracion 
+    n++; // incrementamos n en uno asegurandonos de que cada item del arr1 se inserte dentro de  newArray en su propia 
+    //posicion de item
+  }
+  return newArray
+} 
+let resultA = frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+console.log(resultA) // [ 4, 1, 2, 3, 5, 6 ]
+
+
+//SEGUNDO 
+
+function frankenSplice(arr1, arr2, n) {
+  
+  let newArray = arr2.slice()
+  newArray.splice (n, 0, ...arr1)
+  return newArray 
+} 
+let resulta = frankenSplice([1, 2, 3], [4, 5, 6], 1);
+
+console.log(result)
+
+
 /* */
 /* */
 /* */
