@@ -215,7 +215,7 @@ Esto significa que dado un elemento x, el "detector de verdad" es pasado si func
 la prueba. la función debería devolver undefined*/
 
 function findElement(arr, func) {
-  let num = 0;   // inicalizamos num. 
+  let num = 0;   // inicializamos num 
   for(let i = 0; i < arr.length; i++ ){ // iteramos por cada una de las poisiciones del parametro arr 
   num = arr[i] // actualizamos num 
   if (func(num)){// establecemos num pasado a la funcion para evaluar lo que nos piden cuando la funcion sea llamada. 
@@ -363,6 +363,16 @@ pero menor que 2 (índice 1).
 
 De esta forma, getIndexToIns([20,3,5], 19) debe devolver 2 porque una vez ordenado el arreglo, éste se verá así [3,5,20] 
 y 19 es menor que 20 (índice 2) y mayor que 5 (índice 1). */
+
+function getIndexToIns(arr, num) {
+  let index = arr
+    .sort((curr, next) => curr - next)// primero ordenamos el arreglo
+    .findIndex(currNum => num <= currNum);
+  return index === -1 ? arr.length : index;
+}
+
+getIndexToIns([40, 60], 500);
+
 
 
 
