@@ -230,7 +230,7 @@ console.log(findElement([1, 2, 3, 4], num => num % 2 === 0));
 
 
 
-  /*                                                      EJERCICIO NUMERO 9                                                 */
+  /*                                                      EJERCICIO NUMERO 10                                               */
 
     
   /*Comprueba si el valor está clasificado como booleano primitivo. Devuelve true o false.
@@ -241,7 +241,7 @@ console.log(findElement([1, 2, 3, 4], num => num % 2 === 0));
   } 
   console.log(booWho(true)); // true 
   
-  /*                                                      EJERCICIO NUMERO 10                                                */
+  /*                                                      EJERCICIO NUMERO 11                                               */
 
   
   /*Devuelve la cadena proporcionada con la primera letra de cada palabra en mayúsculas. 
@@ -271,7 +271,7 @@ let test = titleCase("I'm a little tea pot");
 
 console.log(test)
 
-/*                                                      EJERCICIO NUMERO 11                                               */
+/*                                                      EJERCICIO NUMERO 12                                               */
 
 
 
@@ -319,7 +319,7 @@ let resultad = frankenSplice([1, 2, 3], [4, 5, 6], 1); // exactamente el mismo r
 console.log(resultad)
 
 
-/*                                                      EJERCICIO NUMERO 12                                              */
+/*                                                      EJERCICIO NUMERO 13                                              */
 
 
 /*
@@ -350,7 +350,7 @@ console.log(bouncer([false, null, 0, NaN, undefined, ""]));
 
 
 
-/*                                                      EJERCICIO NUMERO 13                                             */
+/*                                                      EJERCICIO NUMERO 14                                             */
 
 
 /*
@@ -366,41 +366,67 @@ y 19 es menor que 20 (índice 2) y mayor que 5 (índice 1). */
 
 function getIndexToIns(arr, num) {
   let index = arr
-    .sort((curr, next) => curr - next)// primero ordenamos el arreglo
-    .findIndex(currNum => num <= currNum);
+    .sort((curr, next) => curr - next)// primero ordenamos el arreglo con sort 
+    .findIndex(currNum => num <= currNum);///
   return index === -1 ? arr.length : index;
 }
 
 getIndexToIns([40, 60], 500);
 
+/* puede ser util 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+
+*/
 
 
-/*                                                      EJERCICIO NUMERO 14                                             */
+
+
+/*                                                      EJERCICIO NUMERO 15                                             */
 
 
 /* Mutaciones
-Devuelve true si la cadena de caracteres en el primer elemento del arreglo contiene todas las letras de la cadena en el segundo elemento del arreglo.
+Devuelve true si la cadena de caracteres en el primer elemento del arreglo contiene
+ todas las letras de la cadena en el segundo elemento del arreglo.
 
-Por ejemplo, ["hello", "Hello"], debe devolver true porque todas las letras de la segunda cadena están presentes en la primera, ignorando mayúsculas o minúsculas.
-
+Por ejemplo, ["hello", "Hello"], debe devolver true porque todas las letras de la 
+segunda cadena están presentes en la primera, ignorando mayúsculas o minúsculas.
 Los argumentos ["hello", "hey"] deben devolver false porque la cadena hello no contiene y.
-
 Finalmente, ["Alien", "line"], debe devolver true porque todas las letras de line están presentes en Alien.*/
 
-function mutation([ target, test ], i = 0) {
-  target = target.toLowerCase();
-  test = test.toLowerCase();
-  return i >= test.length
+function mutation([ target, test ], i = 0) { // aqui estamos asignandole un parametro con valor por default 
+  target = target.toLowerCase(); // convertimos a minuscula 
+  test = test.toLowerCase(); // tambien minuscula 
+  return i >= test.length  //y aqui usamos condicional ternario 
     ? true
-    : !target.includes(test[i])
+    : !target.includes(test[i]) 
       ? false
-      : mutation([ target, test ], i + 1);
+      : mutation([ target, test ], i + 1); // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
 }
 
 
 
+/*                                                      EJERCICIO NUMERO 16                                             */
 
 
+/*Monito Trocitos
+Escribe una función que divida un arreglo (primer argumento) en grupos de la longitud size
+ (segundo argumento) y los devuelva como un arreglo bidimensional. */ 
 
+
+ function chunkArrayInGroups(arr, size) {
+  let newArray = []
+  for (let i = 0; i < arr.length ; i+=size){
+    newArray.push(arr.slice(i, i + size))
+  }
+  return newArray
+}
+
+let resulta = chunkArrayInGroups(["a", "b", "c", "d"], 2);
+
+console.log(resulta) //[ [ 'a', 'b' ], [ 'c', 'd' ]  ]
+
+/* */
+/* */
 /* */
 /* */
