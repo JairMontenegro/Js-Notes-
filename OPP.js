@@ -214,7 +214,7 @@ function Dog(name) {
   this.name = name;
 }
 Dog.prototype = {
-  constructor : Dog, // agregar la propiedad constructor y de esa manera ya se puede comprobar si es instancia de un objeto constructor
+  constructor : Dog, // agregar la propiedad constructor y de esa manera ya se puede comprobar si es instancia de un objeto constructor mira la linea 161
   numLegs: 4,
   eat: function() {
     console.log("nom nom nom");
@@ -225,8 +225,136 @@ Dog.prototype = {
 };
 
 
+
+/*                                      DE DONDE VIENE EL PROTOTIPO DE UN CONSTRUCTOR                                                */
+
+//  Heredan su prototype directamente de la funcion constructor que lo creo  y con isPrototypeOf se puede mostrar si es verdadero o falso
+//      EJEMPLO 
+
+function Dog(name) {
+    this.name = name;
+}
+let beagle3 = new Dog("Snoopy");
+console.log(Dog.prototype.isPrototypeOf(beagle3)) // true 
+
+
+
+
+
+/*                                                  COMPRENDER LA CADENA PROTOTYPE                                                           */
+
+
+
+
+/* Comprende la cadena "prototype" Todos los objetos en JavaScript (con algunas excepciones) tienen un prototype. 
+Además, el prototype de un objeto en sí mismo es un objeto. ya que javascript es un lenguaje de programacion orientado a objetos 
+con una estructura basada  en prototipos, teniendo el concepto de objeto como su principal abstraccion. 
+
+Cada objeto cuando se crea recibe su propio prototipo, si este no esta establecido de manera explicita, recibe un prototipo predeterminado 
+como su objeto de heriencia. TODO LOS OBJETOS HEREDAN DE OBJECT.PROTOTYPE 
+
+
+SI UNA PROPIEDAD NO SE ENCUENTRA EN EL OBJETO MISMO, HAY UN INTENTO DE BUSCARLA EN EL PROTOTIPO, SI NO SE ENCONTRO SE BUSCA EN EL PROTOTIPO DEL
+PROTOTIPO Y ASI SUCESIVAMENTE HASTA QUE SE AGOTEN TODAS LAS CADENAS DE PROTOTIPO (NULL) 
+
+                                    ENVIO DINAMICO O DOLEGACION
+
+*/
+function Dog(name) {
+    this.name = name;
+  }
+  
+  let beagles = new Dog("Snoopy");
+  
+  Dog.prototype.isPrototypeOf(beagles);  // produce true
+  
+  Object.prototype.isPrototypeOf(Dog.prototype);
+
+
+
+
+
+/*                                                          HERIENCIA PARA NO REPETIR CODIGO                                     */
+
+
+/* Ya que corregir varios lugares donde el codigo se repite se convierte en un problema grande para los programadores existe una
+buena practica que se conoce como "DRY" evita multiples errores en la repeticion de codigo.  */
+
+function Cat(name) {
+    this.name = name;
+  }
+  
+  Cat.prototype = {
+    constructor: Cat,
+  };
+  
+  function Bear(name) {
+    this.name = name;
+  }
+  
+  Bear.prototype = {
+    constructor: Bear,
+  
+  };
+  
+  function Animal() { }
+  
+  Animal.prototype = {
+    constructor: Animal,
+    eat: function() {
+      console.log("nom nom nom"); // aqui estariamos creando un mismo metodo que se repetia en funciones prototipo cat y bear 
+    }
+  };
+
+
+/*                                                       HERIENCIA SUPERTYPE                                                      */
+
+
+// COMO SE PODRIA USAR LA HERIENCIA PARA REUTILIZAR METODOS SIN NECESIDAD DE DEFINIRLOS OTRA VEZ 
+// Primero veamos como crear una isntancia de del supertype o del objeto padre. 
+
+
+/*Con Object.create(obj) creamos un objeto nuevo y establece obj como el prototype del nuevo objeto. 
+Recuerda que prototype es como la "receta" para crear un objecto. EJEMPLO */
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+let duck = Object.create(Animal.prototype); 
+console.log(duck instanceof Animal) //true
+let beagles1 = Object.create(Animal.prototype);
+console.log( beagles1  instanceof Animal) //true
+
+/* ahora veamos como establecer el prototypo de hijo  para instancia del padre*/
+
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Dog() { }
+
+
+Dog.prototype = Object.create(Animal.prototype) // estamos definiendo el prototypo de dog y creamos un objeto nuevo con el prototype de animal 
+// que se podria describir como la "receta para que un nuevo animal sea creado"
+
+let beaglest = new Dog(); // este nuevo objeto tendra todas las props que tiene el prototipo de un animal TAMBIEN ES BUENO PENSAR EN EL PROTOTIPO
+                            // COMO EN UN "CODIGO GENETICO DEL OBJETO"
+beaglest.eat() //nom nom nom
+
 /* */
+
 /* */
-/* */
+
 /* */
 /* */
