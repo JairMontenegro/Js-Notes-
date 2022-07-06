@@ -241,7 +241,7 @@ console.log(Dog.prototype.isPrototypeOf(beagle3)) // true
 
 
 
-/*                                                  COMPRENDER LA CADENA PROTOTYPE                                                           */
+/*                                                  COMPRENDER LA CADENA PROTOTYPE         //supertype subtype                                                   */
 
 
 
@@ -264,11 +264,11 @@ function Dog(name) {
     this.name = name;
   }
   
-  let beagles = new Dog("Snoopy");
+  let beagles = new Dog("Snoopy"); // dog seria el supertype de beagles, beagles
   
-  Dog.prototype.isPrototypeOf(beagles);  // produce true
+  Dog.prototype.isPrototypeOf(beagles);  // produce true   
   
-  Object.prototype.isPrototypeOf(Dog.prototype);
+  Object.prototype.isPrototypeOf(Dog.prototype); // Object.prototype es el protype Dog.Prototype
 
 
 
@@ -302,7 +302,7 @@ function Cat(name) {
   Animal.prototype = {
     constructor: Animal,
     eat: function() {
-      console.log("nom nom nom"); // aqui estariamos creando un mismo metodo que se repetia en funciones prototipo cat y bear 
+      console.log("nom nom nom"); // aqui estariamos creando un mismo metodo que se repetia en el prototipo  de cat y bear 
     }
   };
 
@@ -311,7 +311,7 @@ function Cat(name) {
 
 
 // COMO SE PODRIA USAR LA HERIENCIA PARA REUTILIZAR METODOS SIN NECESIDAD DE DEFINIRLOS OTRA VEZ 
-// Primero veamos como crear una isntancia de del supertype o del objeto padre. 
+// Primero veamos como crear una instancia de del supertype o del objeto padre. 
 
 
 /*Con Object.create(obj) creamos un objeto nuevo y establece obj como el prototype del nuevo objeto. 
@@ -330,7 +330,7 @@ console.log(duck instanceof Animal) //true
 let beagles1 = Object.create(Animal.prototype);
 console.log( beagles1  instanceof Animal) //true
 
-/* ahora veamos como establecer el prototypo de hijo  para instancia del padre*/
+/* ahora veamos como establecer el prototypo de hijo para instancia del padre*/
 
 
 function Animal() { }
@@ -344,17 +344,77 @@ Animal.prototype = {
 
 function Dog() { }
 
-
 Dog.prototype = Object.create(Animal.prototype) // estamos definiendo el prototypo de dog y creamos un objeto nuevo con el prototype de animal 
 // que se podria describir como la "receta para que un nuevo animal sea creado"
-
 let beaglest = new Dog(); // este nuevo objeto tendra todas las props que tiene el prototipo de un animal TAMBIEN ES BUENO PENSAR EN EL PROTOTIPO
                             // COMO EN UN "CODIGO GENETICO DEL OBJETO"
 beaglest.eat() //nom nom nom
 
-/* */
+// IMPORTANTE CUANDO UN OBJETO HEREDA EL PROTOTYPE DE OTRO OBJETO TAMBIEN HEREDA LA PROPIEDAD DEL CONSTRUCTOR DEL SUPERTYPE
+
+// para eso podemos reestablecer el constructor de forma manual ejemplo
+
+
+function Animal() { }
+function Bird() { }
+function Dog() { }
+
+Bird.prototype = Object.create(Animal.prototype); // estamos creando la isntancia de prototypo de animal  para cada funcion
+Dog.prototype = Object.create(Animal.prototype); 
+
+
+
+
+Bird.prototype.constructor = Bird // sin estas lineas el constructor de nuestras nuevas instancias de objeto seria el 
+Dog.prototype.constructor = Dog // que heredan por el prototype animal = FunctionAnimal 
+
+
+
+let ducks = new Bird(); 
+let beagles2= new Dog();
+console.log(ducks.constructor)  // aqui el constructor de animal nos mostrara por consola que es function Bird y no Animal 
+console.log(beagle2.constructor) // aqui el constructor de animal nos mostrara por consola que es function Dog y no Animal 
+
+
+
+
+/*                              AÑADIR METODOS DESPUES DE LA HERIENCIA                                                */
+
+
+
+/*
+Una función constructor que hereda su objeto prototype de una función constructor "supertype" 
+puede seguir teniendo sus propios métodos además de los heredados.
+EJERCICIO 
+Añade el código necesario para que el objeto Dog herede de Animal y el constructor prototype de Dog sea establecido en Dog.
+A continuación agrega el método bark() al objeto Dog, para que beagle pueda "comer" eat() y "ladrar" bark(). El método bark()
+debe imprimir Woof! por consola.
+*/
+
+function Animal() { }
+Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+function Dog() { }
+Dog.prototype = Object.create(Animal.prototype)
+Dog.prototype.constructor = Dog
+Dog.prototype.bark = function (){
+  console.log("Woof!")
+  }
+
+
+
+let beagle12 = new Dog(); 
+console.log(beagle12.bark()) // Woof!
+
+
+
+/*                                       SOBRE ESCRIBIR METODOS HEREDADOS                                               */
+
+
+
 
 /* */
 
+/* */
 /* */
 /* */
