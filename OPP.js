@@ -1,4 +1,4 @@
-//                                                                  PROGRAMACION ORIENTADA OBJETOS 
+//                                                 PROGRAMACION ORIENTADA OBJETOS 
 
 
 /* Repasar como crear y como acceder a un objeto mediante notacion de punto (dot notation) */
@@ -332,13 +332,14 @@ console.log( beagles1  instanceof Animal) //true
 
 /* ahora veamos como establecer el prototypo de hijo para instancia del padre*/
 
+  ChildObject.prototype = Object.create(ParentObject.prototype);// syntaxis
 
 function Animal() { }
 
 Animal.prototype = {
   constructor: Animal,
   eat: function() {
-    console.log("nom nom nom");
+    return "nom nom nom"
   }
 };
 
@@ -350,6 +351,11 @@ let beaglest = new Dog(); // este nuevo objeto tendra todas las props que tiene 
                             // COMO EN UN "CODIGO GENETICO DEL OBJETO"
 beaglest.eat() //nom nom nom
 
+
+
+
+
+
 // IMPORTANTE CUANDO UN OBJETO HEREDA EL PROTOTYPE DE OTRO OBJETO TAMBIEN HEREDA LA PROPIEDAD DEL CONSTRUCTOR DEL SUPERTYPE
 
 // para eso podemos reestablecer el constructor de forma manual ejemplo
@@ -359,14 +365,15 @@ function Animal() { }
 function Bird() { }
 function Dog() { }
 
-Bird.prototype = Object.create(Animal.prototype); // estamos creando la isntancia de prototypo de animal  para cada funcion
+Bird.prototype = Object.create(Animal.prototype); // estamos creando la isntancia de prototypo de animal  para cada funcion y heredaria el constructor de animal
+
 Dog.prototype = Object.create(Animal.prototype); 
 
 
 
 
 Bird.prototype.constructor = Bird // sin estas lineas el constructor de nuestras nuevas instancias de objeto seria el 
-Dog.prototype.constructor = Dog // que heredan por el prototype animal = FunctionAnimal 
+Dog.prototype.constructor = Dog // que heredan por el prototype animal = Function Animal asi que lo estamos estableciendo para que el constructor sea el child
 
 
 
@@ -391,6 +398,8 @@ A continuación agrega el método bark() al objeto Dog, para que beagle pueda "c
 debe imprimir Woof! por consola.
 */
 
+ChildObject.prototype.methodName = function() {}; //sintaxys 
+
 function Animal() { }
 Animal.prototype.eat = function() { console.log("nom nom nom"); };
 
@@ -398,7 +407,7 @@ function Dog() { }
 Dog.prototype = Object.create(Animal.prototype)
 Dog.prototype.constructor = Dog
 Dog.prototype.bark = function (){
-  console.log("Woof!")
+  return "Woof!"
   }
 
 
@@ -413,8 +422,113 @@ console.log(beagle12.bark()) // Woof!
 
 
 
-/* */
+/* Trambien podemos sobreescribir los metodos heredados. es decir  en el ejemplo anterior podriamos sobre escribir bark. */
 
-/* */
+Dog.prototype.barlk = function (){return "I'm barking, Woof!!  Woof!! "}  
+
+
+/*                      "MIXIN" PARA AÑADIR UN COMPORTAMIENTO COMUN ENTRE OBJETOS NO RELACIONADOS                      */
+
+// para compartir metodos de objetos que no esten relacioneados entre si ejemplo con ejercicio 
+
+/*Crea un mixin llamado glideMixin que defina un método llamado glide. Luego utiliza el glideMixin para dar a bird y boat 
+la habilidad de planear.
+ */
+
+let bird = {
+  name: "Donald",
+  numLegs: 2
+};
+
+let boat = {
+  name: "Warrior",
+  type: "race-boat"
+};
+
+let glideMixin = function (obj){
+  obj.glide = function (){
+    return "I'm gidling"
+  }
+}
+
+glideMixin(boat)
+glideMixin(bird)
+
+console.log(boat.glide()) // I'm gidling
+console.log(bird.glide()) // I'm gidling
+
+
+/*                                                TEMA IMPORNTANTE CLOSURES                                */
+
+//https://www.freecodecamp.org/espanol/learn/javascript-algorithms-and-data-structures/object-oriented-programming/use-closure-to-protect-properties-within-an-object-from-being-modified-externally
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+
+// En JavaScript, una función siempre tiene acceso al contexto en el que se creó. A esto se le llama closure.
+
+/*Se usa para evitar que las propiedades de un objeto puedan ser cambiadas, suponiendo que estemos en una 
+aplicacion de banco con algun objeto con informacion, podiamos ocasionar varios errores al 
+dejar que esas propiedades puedan ser modificadas a lo largo de nuestro codigo. 
+
+La manera mas sencilla de arreglar esta situacion es declarando una variable dentro de la funcion constructora 
+para que solo nos permita cambiarla dentro el ambito de esa funcion y ya no podamos acceder a ella de manera global.
+*/
+
+function Bird() {
+  let weight = 15; // definimos la variable 
+
+  this.getWeight = function (){
+    return weight //metodo para retornar nuestra variable y evite ser cambiada 
+  }
+
+}
+let donald = new Bird()
+
+
+donald.getWeight() // metodo privilegiado porque tiene acceso a la variable privada weight 
+// 
+
+
+
+
+
+/*                               funciones que son invocadas inmediatamente (IIFE)                                */
+/*                               Immediately Invoked Function Expression (IIFE)                                   */
+
+ // es un patron comun ver funciones que se invoquen de manera inmediata un ejemplo de ellas es la siguiente. 
+
+ (function () { // se coloca entre parentesis "notar que no hay nombre y no se almacena en ningun lugar"
+  console.log("A cozy nest is ready"); 
+})() // estos paretecis hacen que la funcion sea invocada inmediatamente. En este caso la consola nos mostraria A cozy nest is ready
+
+
+/*                                         CREAR MODULOS GRACIAS A (IIFE)                                          */
+
+
+let  funModule = (function(){ // estamos definiendo un modulo gracias a las IIFE (CONTIENE DOS MIXIN) REVISAR MIXIN
+  return {
+  isCuteMixin : function(obj) {
+    obj.isCute = function() {
+      return true;
+    };
+  },
+   singMixin : function(obj) {
+    obj.sing = function() {
+      console.log("Singing to an awesome tune");
+     };
+    }
+  }
+  })(); // RECORDAR INVOCAR LA FUNCION O "MODULO"
+
+// con esto tenemos la ventaja de usarlos en un solo paquete para cualquiera de nuestros objetos solo invocando nuestra variable 
+// en este caso funModule 
+ 
+// como por ejemplo esto.
+
+funModule.isCuteMixin(dog);
+dog.iscute();
+
+
+  
+
 /* */
 /* */

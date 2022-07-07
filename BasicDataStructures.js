@@ -55,7 +55,7 @@ Array.splice().
 
 CARACTERISTICAS 
         -Toma hasta tres parametros enteros (int).
-        -Los primeros dos parametros representan : 
+        -Los primeros dos parametros representan :  SE PUEDE DECIR QUE EXTRAE
                                                 el primero el indice donde queremos comenzar a eliminar elementos. 
                                                 el segundo el numero de elementos a eliminar. 
         -IMPORTANTE No solo los elimina sino tambien los devuelve en un nuevo arreglo que va a contener los valores eliminados

@@ -282,8 +282,8 @@ LOOKAHEAD : patrones que le indican a js que busque por anticipado para verifica
 
 
 LOOKAHEAD POSITIVO (?=patron): buscara para asgurarse que el elemento este en el patron de busqueda pero no lo coincidira.
-LOOKAHEAD NEGATIVO (?!patron): buscara para asgurarse que el elemento NO este en el patron de busqueda pero no lo coincidira, devolviendo el patron si se 
-devuelve si la parte del lookhaead negativo no esta prestente. 
+LOOKAHEAD NEGATIVO (?!patron): buscara para asgurarse que el elemento NO este en el patron de busqueda, devolviendo el patron si la 
+parte del lookhaead negativo no esta prestente. 
 
 */
                 let sampleWord = "abc123";
