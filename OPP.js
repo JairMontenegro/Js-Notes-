@@ -463,9 +463,15 @@ console.log(bird.glide()) // I'm gidling
 //https://www.freecodecamp.org/espanol/learn/javascript-algorithms-and-data-structures/object-oriented-programming/use-closure-to-protect-properties-within-an-object-from-being-modified-externally
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
 
+//  FUNCION QUE ENCAPSULA UNA SERIE DE VARIABLES Y DEFINICIONES LOCALES QUE UNICAMENTE SERAN ACCESIBLES SI SON DEVUELTAS CON RETURN
+//  NOS PERMITE TENER VARIABLES PRIVADAS (NO DEL TODO) PERO HACEMOS QUE SEA DIFICIL ACCEDER DESDE FUERA DEL SCOPE.
+//  NOS PERMITE MODULARIZAR NUESTRO CODIGO COMO POR EJEMPLO LINEA 508
+//  
+
+
 // En JavaScript, una función siempre tiene acceso al contexto en el que se creó. A esto se le llama closure.
 
-/*Se usa para evitar que las propiedades de un objeto puedan ser cambiadas, suponiendo que estemos en una 
+/*Se usa para evitar que las propiedades de un obj, metodo o funcion, NO puedan ser cambiadas, suponiendo que estemos en una 
 aplicacion de banco con algun objeto con informacion, podiamos ocasionar varios errores al 
 dejar que esas propiedades puedan ser modificadas a lo largo de nuestro codigo. 
 
@@ -520,7 +526,7 @@ let  funModule = (function(){ // estamos definiendo un modulo gracias a las IIFE
   })(); // RECORDAR INVOCAR LA FUNCION O "MODULO"
 
 // con esto tenemos la ventaja de usarlos en un solo paquete para cualquiera de nuestros objetos solo invocando nuestra variable 
-// en este caso funModule 
+// en este caso funModule  y ESTO ES UN CLOSURO PETRON PARECIDO A CLASES 
  
 // como por ejemplo esto.
 
