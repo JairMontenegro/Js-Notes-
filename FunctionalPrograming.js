@@ -35,7 +35,7 @@ Son funciones que toman una función como argumento o devuelven una función com
 
 // FUNCIONES LAMBDA  :
 /* 
-segun lo que investigue es una funcion anonima y autoejecutable
+segun lo que investigue es una funcion anonima y autoejecutable 
 */
 
 
