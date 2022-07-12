@@ -36,7 +36,7 @@ Son funciones que toman una función como argumento o devuelven una función com
 
 // FUNCIONES LAMBDA  :
 /* 
-segun lo que investigue es una funcion anonima y autoejecutable
+segun lo que investigue es una funcion anonima y autoejecutable (Fat Arrow Function)
 
 */
 
@@ -95,6 +95,67 @@ Declara parámetros de función: cualquier cálculo dentro de una función depen
 y no en ningún objeto o variable global.
 
 Añadir uno a un número no es muy emocionante, pero podemos aplicar estos principios cuando trabajamos con arreglos u objetos más complejos.*/
+
+// EJERCICIO PARA TENER EN CUENTA 
+//https://www.freecodecamp.org/espanol/learn/javascript-algorithms-and-data-structures/functional-programming/refactor-global-variables-out-of-functions
+
+
+/*                      METODO MAP PARA EXTRAER DATOS DE UN ARREGLO                                                 */
+
+
+/* Toma un arreglo de una cantidad determinada y nos va a devolver otro arreglo que va a tener la mixma longitud 
+que el arreglo inicial al cual le llamamos el metodo, nos permite tomar la funcion que le pasamos como argumento   
+y aplicar esa funcion a cada uno de los elementos que se encuentra dentro del arreglo.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map  
+
+
+*/
+
+
+
+
+/*                                                           METODO FILTER PARA EXTRAER DATOS DE UN ARGUMENTO                                            */
+
+
+/*llama a una funcion en cada elemento de un arreglo y devuelve un nuevo arreglo que contiene solo los elementos
+por lo que esa funcion devuelve true, filtra el arreglo basandose en la funcion que se le pasa. Y tampoco muta el arreglo original
+
+EJERCICIO https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-filter-method-to-extract-data-from-an-array
+
+lo intente solucionar de la siguiente manera.  
+*/
+
+const filteredList = watchList.map(movie =>{ /*"mapeamos todo el arreglo pasandole una fat arrow function la cual iteramos entre todos
+los objetos del arreglo"*/
+let newObj = {}  
+    newObj["title"] = movie.Title // estamos asignandole las propiedades de nuestra iteracion através de movie, a un nuevo objeto que creamos
+    newObj["rating"] = movie.imdbRating 
+    return newObj 
+}).filter(individualRating => { //filtramos un elemento y ahi es donde viene su defincion, nos devuelve el array con LA MISMA CANTIDAD DE ELEMENTOS 
+    //O MENOS  y estamos filtrando el objeto en este caso con una tambien fat arrow function el cual le decimos que intere por los rating y con el ternary conditional
+    let convertToFloat = parseFloat(individualRating.rating)  // convertimos a decimal 
+    return convertToFloat <= 8.0 ? "": individualRating // le estamos diciendo que si la conversion del decimal es menor o igual 8.0  no nos muestre nada
+    // caso contrario nos muestre los que tengan mas que ese numero
+});
+
+//ESTA COSA CADA VEZ SE VUELVE MAS COMPLEJA, PERO TAMBIEN INTERESANTE.
+
+
+/*                                                         METODO SLICE REPASO                                                           */
+
+/* Utiliza el método slice en la función sliceArray para retornar parte del arreglo anim dados los índices beginSlice y endSlice. 
+La función debe devolver un arreglo.*/
+
+function sliceArray(anim, beginSlice, endSlice) {
+    return anim.slice(beginSlice, endSlice)     
+    }
+    
+    const inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
+    console.log(sliceArray(inputAnim, 1, 4));
+
+
+
 
 
 

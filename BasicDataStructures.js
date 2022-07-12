@@ -1,5 +1,6 @@
 /*                                                      ESTRUCTURAS DE DATOS                                                 */
 
+https://codeburst.io/javascript-passing-by-value-vs-reference-explained-in-plain-english-8d00fd06a47c
 
 /*La implementacion mas basica de una estructura de datos es un arreglo con valores adentro sin otros arreglos anidados dentro de si. A esto se le conoce como arreglos unidimesionales es decr que solo tiene un nivel. */
 let simpleArray = ['one', 2, 'three', true, false, undefined, null];
