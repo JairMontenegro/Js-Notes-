@@ -7,7 +7,7 @@
 
 /* METODOS  */
 
-/*FUNCIONES QUE SON ESTABELCIDAS A UNA PROPIEDAD DE UN OBJETO. EJEMPLO 
+/*FUNCIONES QUE SON ESTABLECIDAS A UNA PROPIEDAD DE UN OBJETO. EJEMPLO 
  */
 
 let dog = {
@@ -109,7 +109,7 @@ function Bird(name) {
 
 
 
-/*                                           PROPTOTYPE PARA REDUCIR EL CODIGO DUPLICADO                                                           */
+/*                                           PROPTOTYPE                                                   */
 
 
 /* prototype se usa para compartir las propiedades que puedan tener en todas las instancias de un objeto. 
@@ -145,16 +145,16 @@ function Dog(name) {
   let prototypeProps = [];
   
   
-  for(let property in beagle){
-    if(Dog.hasOwnProperty(property)){
-      ownProps.push(property)
+  for(let property in beagle2){
+    if(Dog.hasOwnProperty(property)){ 
+      ownProps2.push(property)
     }else{
       prototypeProps.push(property)
     }
   }
   
-  console.log(ownProps)
-  console.log(prototypeProps)
+  console.log(ownProp2s) // nos mostrara las propiedades directas 
+  console.log(prototypeProps) // nos mostrara las propiedades del prototype
 
 
 
