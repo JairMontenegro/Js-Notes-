@@ -291,7 +291,98 @@ La función debe devolver un nuevo arreglo que contenga los cuadrados de solamen
 
 Nota: Tu función no debe usar ningún tipo de bucle for o while o la función forEach().*/
 
+const squareList = arr => { 
+let itsIntegerAndPositive = arr.filter(x => x % 1 === 0 && x > 0 ) // filtramos el arreglo para que en el resultado de cada iteracion nos retorne
+// un arreglo que no sea decimal y tampoco sea negativo 
+return itsIntegerAndPositive.map(x => x * x) // iteramos y a cada iteracion que le hacemos lo multiplicamos para sacar el cuadrado.
+};
+
+const squaredIntegers = squareList([4, 5.6, -9.8, 3.14, 42, 6, 8.34, -2]);
+console.log(squaredIntegers); //[ 16, 1764, 36 ] 
 
 
+
+
+
+
+
+
+/*                                                       METODO SORT PARA ORDENAR                                         */
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#examples
+
+// El método sort ordena los elementos de un arreglo de acuerdo a la función callback.
+
+/*Ejercicio 
+Utiliza el método sort en la función alphabeticalOrder para ordenar los elementos de arr en orden alfabético. 
+La función debe devolver el arreglo ordenado. */
+
+function alphabeticalOrder(arr) {
+    arr.sort((a,b)=> a === b ? 0 : b < a ? 1 : -1) // pasamos un callback donde si devuevle un valor menor a 0 para a y b entonces b ira antes que a 
+                // y si devuelve un valor mayor para a y b entnces a ira antes que b 
+                // y si es 0 pues los dejara como esta 
+        return arr
+    }
+    
+    console.log(alphabeticalOrder(["a", "d", "c", "a", "z", "g"]));  //  [ 'a', 'a', 'c', 'd', 'g', 'z' ]
+
+
+    // SORT TIENE EFECTOS SECUNDARIOS YA QUE COMO PUDIMOS VER, MUTA EL ARREGLO ORIGINAL Una forma de evitar esto es concatenar primero 
+    // un arreglo vacío al que está siendo ordenado (recuerda que slice y concat devuelven un nuevo arreglo), luego ejecutar el método sort.
+
+
+// EJERCICIO 
+// Utiliza el método sort en la función nonMutatingSort para ordenar los elementos de un arreglo en orden ascendente. La función debe devolver un
+// nuevo arreglo y no mutar la variable globalArray. 
+// lo solucione asi 
+const globalArray = [5, 6, 3, 2, 9];
+
+function nonMutatingSort(arr) {
+    let localArray = [] 
+    let copyArr = arr.slice()
+    let concat =  copyArr.concat(localArray)
+    return concat.sort((a , b) => a - b)
+    
+    }
+    
+    console.log(nonMutatingSort(globalArray)) ; 
+
+
+/*                                                   REPASO METODO SPLIT () 
+
+DIVIDE UNA CADENA EN UN ARREGLO DE CADENAS BUSCANDO NECESITANDO UN PATRON SPLIT PUDIENDO SER UN CARACTER O UNA REGEX
+
+EJERCICIO 
+Utiliza el método split dentro de la función splitify para dividir str en un arreglo de palabras.
+La función debe devolver un arreglo. Ten en cuenta que las palabras no siempre están separadas por espacios
+y que el arreglo no debe contener signos de puntuación.
+
+
+
+*/ 
+function splitify(str) {
+    return str.split(/\W/)
+    }
+    console.log(splitify("Hello World,I-am code"));
+
+
+
+/*                                                 REPASO METODO JOIN () 
+
+
+        UNE LOS ELEMENTOS DE UN ARRAY EN UN STRING CON UN DELIMITADOR TAMBIEN PUDIENDO SER UN CARACTER O UNA REGEX  
+        EJERCICIO 
+
+
+Utiliza el método join (entre otros) dentro de la función sentensify para hacer una oración a partir de las palabras 
+en la cadena str. La función debe devolver una cadena. Por ejemplo, I-like-Star-Wars se convertiría en I like Star Wars.
+Para este desafío, no utilices el método replace.
+*/
+
+function sentensify(str) {
+    let convertToArray = str.split (/\W/)
+    return convertToArray.join(" ")
+    }
+    
+    console.log(sentensify("May-the-force-be-with-you"));
 /* */
 /* */
