@@ -54,8 +54,8 @@ Son ejemplos cuando usamos sentencias if, if else,  funciones, llamadas, sumas y
 /* DECLERATIVA  usamos la composicion de funciones para poder detallar el flujo, teniendo como ventaja 
 es mas facil de leer siempre y cuando este correctamente realizada. */
 
-// UN PRINCIPIO FUNDAMENTAL DE LA FUNCION FUNCIONAL ES NO CAMBIAR LAS COSAS, YA QUE LOS CAMBIOS CONDUCEN A ERRORES
-// ES MAS FACIL EVITAR ERRPRES SABIENDO QUE LAS FUNCIONES NO CAMBIAN NADA, INCLUYENDO LOS ARGUMENTOS DE LA FUNCION O CUALQUIER VARIABLE GLOBAL
+// UN PRINCIPIO FUNDAMENTAL DE LA FUNCION FUNCIONAL ES NO MUTAR LAS COSAS, YA QUE LAS MUTACIONES CONDUCEN A ERRORES
+// ES MAS FACIL EVITAR ERRPRES SABIENDO QUE LAS FUNCIONES NO CAMBIAN NADA, INCLUYENDO LO    S ARGUMENTOS DE LA FUNCION O CUALQUIER VARIABLE GLOBAL
 // RECORDAR QUE CAMBIAR O ALTERAR COSAS SE LLAMA MUTAR Y ESTAS CONLLEVAN EFECTOS SECUNDARIOS
 
 
@@ -107,6 +107,12 @@ Añadir uno a un número no es muy emocionante, pero podemos aplicar estos princ
 que el arreglo inicial al cual le llamamos el metodo, nos permite tomar la funcion que le pasamos como argumento   
 y aplicar esa funcion a cada uno de los elementos que se encuentra dentro del arreglo.
 
+
+
+Cuando se utiliza la función callback, se pasan tres argumentos. El primer argumento es el elemento actual que se está
+procesando. El segundo es el índice de ese elemento y el tercero es el arreglo al que se llamó el método map.
+
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map  
 
 
@@ -121,9 +127,14 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 /*llama a una funcion en cada elemento de un arreglo y devuelve un nuevo arreglo que contiene solo los elementos
 por lo que esa funcion devuelve true, filtra el arreglo basandose en la funcion que se le pasa. Y tampoco muta el arreglo original
 
+La función callback acepta tres argumentos. El primer argumento es el elemento actual que se está procesando. El segundo es el índice de ese elemento y el
+tercero es el arreglo sobre el que se llamó al método filter.
+
 EJERCICIO https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-filter-method-to-extract-data-from-an-array
 
 lo intente solucionar de la siguiente manera.  
+
+
 */
 
 const filteredList = watchList.map(movie =>{ /*"mapeamos todo el arreglo pasandole una fat arrow function la cual iteramos entre todos
@@ -154,12 +165,133 @@ function sliceArray(anim, beginSlice, endSlice) {
     const inputAnim = ["Cat", "Dog", "Tiger", "Zebra", "Ant"];
     console.log(sliceArray(inputAnim, 1, 4));
 
+// para remover datos de un arreglo es mejor usar slice ya que el metodo splice que tambien remueve los elementos que necesitamos 
+// asi que usar slice en lugar de splice  ayuda a prevenir cualquier daño efecto secundario de  mutar un arreglo 
+
+
+/* 
+
+EJERCICIO 
+Reescribe la función nonMutatingSplice usando slice en lugar de splice. Debe limitar el arreglo proporcionado cities a una longitud d
+e 3 y devolver un nuevo arreglo con solo los primeros tres elementos.
+
+No modifiques el arreglo original proporcionado en la función.
+
+ */
+
+function nonMutatingSplice(cities) {
+    return cities.slice(0,3);
+}
+const inputCities = ["Chicago", "Delhi", "Islamabad", "London", "Berlin"];
+console.log(nonMutatingSplice(inputCities));
+
+
+/*                                                    METODO CONCAT                                                                    */
+
+// CONCATENAR SIGNIFICA UNIR DE EXTREMO A EXTREMO, EN JS CONCAT FUNCIONA DE LA MISMA MANERA PARA ARREGLOS Y STRINGS 
+
+// SINTAXYS [1, 2, 3].concat([4, 5, 6]);  
+/* 
+EJERCICIO : 
+
+Usa el método concat en la función nonMutatingConcat para concatenar attach al final de original. La función deber devolver el
+ arreglo concatenado.
+*/ 
+
+function nonMutatingConcat(original, attach) {
+    return original.concat(attach)
+}
+    const first = [1, 2, 3];
+    const second = [4, 5];
+    let test = nonMutatingConcat(first, second);
+    console.log(test)
+
+
+/*                                                     USAR CONCAT EN VEZ DE PUSH                                                       */
+
+
+/*
+COMO EL PRINCIPAL OBJETIVO DE LA PROGRAMACION FUNCIONAL ES USAR FUNCIONES NO MUTANTES. Y RECORDANDO QUE EL METODO .PUSH LE EMPUJA/AÑADE
+ELEMENTOS AL FINAL DE UN ARREGLO MUTANDOLOS (haciendo que puedan aparecer efectos secundarios), una manera de arregla este problema.
+es con concat ya que añade nuevos elementos  al final de un arreglo sin mutar el arreglo original
+EJERCICIO 
+Cambia la función nonMutatingPush para que use concat para añadir newItem al final de original en lugar de push. La función debe devolver un arreglo.
+
+ */
+function nonMutatingPush(original, newItem) {
+    return  original.concat(newItem)
+    
+    //return original.push(newItem); // si usaramos push la consola nos mostraria solo el numero 4.
+  }
+  const first2 = [1, 2, 3];
+  const second2 = [4, 5];
+   console.log(nonMutatingPush(first2, second2)); 
 
 
 
 
+   /*                                                     REDUCE PARA ANALIZAR DATOS                                                    */
+
+/*
+El método reduce itera sobre cada elemento del arreglo y devuelve un solo valor (por ejemplo una cadena, número, objeto, arreglo).
+Esto se consigue mediante una función callback que se llama en cada iteración.
 
 
-/* */
+La función callback acepta cuatro argumentos. El primer argumento se conoce como acumulador, que recibe el valor retornado de la función
+callback de la iteración anterior, el segundo es el elemento actual que se está procesando, el tercero es el índice de ese elemento y el 
+cuarto es el arreglo sobre el que se llama a la función reduce.
+
+Además de la función callback, reduce tiene un parámetro adicional que toma un valor inicial para el acumulador. Si este segundo parámetro no se utiliza,
+entonces la primera iteración se omite y la segunda se pasa por el primer elemento del arreglo como acumulador.
+
+array.reduce (function (total, currentValue, currentIndex, arr), initialValue)
+
+
+
+EJERCICIO 
+
+https://www.freecodecamp.org/espanol/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-reduce-method-to-analyze-data   
+
+La variable watchList contiene un arreglo de objetos con información sobre varias películas. Utiliza reduce para encontrar la calificación
+media en IMDB de las películas dirigidas por Christopher Nolan. Recuerda de desafíos anteriores filtrar (filter) los datos y mapear (map) 
+sobre ellos para extraer lo que necesitas. Puede que necesites crear otras variables y devolver la calificación media con la función getRating. 
+Ten en cuenta que los valores de calificación se guardan como cadenas en el objeto y necesitan ser convertidos en números antes de ser utilizados
+en cualquier operación matemática.
+
+intente solucionarlo de la siguiente manera 
+
+
+*/
+
+function getRating(watchList) {
+    let nolanMovies = watchList.filter(movies => { // con filter lo que hacemos es filtrar iterando por toda la lista el parametro 
+        if(movies.Director === "Christopher Nolan") return movies   // y con if buscamos que 
+    }) 
+
+let imdbRatingSum = nolanMovies.reduce((total , movie) => { // linea 247  pasamos la funcion callback con dos argumentos el cual el primero 
+    // es el total de lo que estamos reduciendo y el segundo es para iterar en los valores de movie.imdbRating acumulador 
+    total += parseFloat(movie.imdbRating) //convertimos a Float 
+   return total 
+  },0) // valor donde queremos que inicie el acumulador. linea 244
+  
+    let averageRating = imdbRatingSum / nolanMovies.length; // sacamos promedio 
+  
+  
+    return averageRating; // devolvemos el promedio 
+  }
+  
+  console.log(getRating(watchList)); //  8.675      
+
+
+
+/* EJERCICIO 
+Completa el código para la función squareList usando cualquier combinación de map(), filter(), y reduce(). 
+La función debe devolver un nuevo arreglo que contenga los cuadrados de solamente los enteros positivos (números decimales no son enteros)
+ cuando se le pasa un arreglo de números reales. Un ejemplo de un arreglo que contiene números reales es [-3, 4.8, 5, 3, -3.2].
+
+Nota: Tu función no debe usar ningún tipo de bucle for o while o la función forEach().*/
+
+
+
 /* */
 /* */
