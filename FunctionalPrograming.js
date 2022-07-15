@@ -124,11 +124,11 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 /*                                                           METODO FILTER PARA EXTRAER DATOS DE UN ARGUMENTO                                            */
 
 
-/*llama a una funcion en cada elemento de un arreglo y devuelve un nuevo arreglo que contiene solo los elementos
+/*Llama a una funcion en cada elemento de un arreglo y devuelve un nuevo arreglo que contiene solo los elementos
 por lo que esa funcion devuelve true, filtra el arreglo basandose en la funcion que se le pasa. Y tampoco muta el arreglo original
 
-La función callback acepta tres argumentos. El primer argumento es el elemento actual que se está procesando. El segundo es el índice de ese elemento y el
-tercero es el arreglo sobre el que se llamó al método filter.
+La función callback acepta tres argumentos. El primer argumento es el elemento actual que se está procesando. El segundo es el índice 
+de ese elemento y el tercero es el arreglo sobre el que se llamó al método filter.
 
 EJERCICIO https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/functional-programming/use-the-filter-method-to-extract-data-from-an-array
 
@@ -143,7 +143,7 @@ let newObj = {}
     newObj["title"] = movie.Title // estamos asignandole las propiedades de nuestra iteracion através de movie, a un nuevo objeto que creamos
     newObj["rating"] = movie.imdbRating 
     return newObj 
-}).filter(individualRating => { //filtramos un elemento y ahi es donde viene su defincion, nos devuelve el array con LA MISMA CANTIDAD DE ELEMENTOS 
+}).filter(individualRating => { //filtramos un  elemento y ahi es donde viene su defincion, nos devuelve el array con LA MISMA CANTIDAD DE ELEMENTOS 
     //O MENOS  y estamos filtrando el objeto en este caso con una tambien fat arrow function el cual le decimos que intere por los rating y con el ternary conditional
     let convertToFloat = parseFloat(individualRating.rating)  // convertimos a decimal 
     return convertToFloat <= 8.0 ? "": individualRating // le estamos diciendo que si la conversion del decimal es menor o igual 8.0  no nos muestre nada
@@ -212,7 +212,7 @@ function nonMutatingConcat(original, attach) {
 
 /*
 COMO EL PRINCIPAL OBJETIVO DE LA PROGRAMACION FUNCIONAL ES USAR FUNCIONES NO MUTANTES. Y RECORDANDO QUE EL METODO .PUSH LE EMPUJA/AÑADE
-ELEMENTOS AL FINAL DE UN ARREGLO MUTANDOLOS (haciendo que puedan aparecer efectos secundarios), una manera de arregla este problema.
+ELEMENTOS AL FINAL DE UN ARREGLO MUTANDOLOS (haciendo que puedan aparecer efectos secundarios), una manera de arreglar este problema.
 es con concat ya que añade nuevos elementos  al final de un arreglo sin mutar el arreglo original
 EJERCICIO 
 Cambia la función nonMutatingPush para que use concat para añadir newItem al final de original en lugar de push. La función debe devolver un arreglo.
@@ -244,7 +244,7 @@ cuarto es el arreglo sobre el que se llama a la función reduce.
 Además de la función callback, reduce tiene un parámetro adicional que toma un valor inicial para el acumulador. Si este segundo parámetro no se utiliza,
 entonces la primera iteración se omite y la segunda se pasa por el primer elemento del arreglo como acumulador.
 
-array.reduce (function (total, currentValue, currentIndex, arr), initialValue)
+array.reduce (function  
 
 
 

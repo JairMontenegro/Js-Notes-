@@ -92,7 +92,7 @@ CARACTERISTICAS.
 
                 -Toma dos parametros. 
                                 - En el primero indicamos el elemento de inicio que queremos copiar/extraer. 
-                                - En el segundo  parametro, es donde se deteiene la extracion SIN INCLUIR EL ELEMENTO DE ESE INDICE.
+                                - En el segundo  parametro, es donde se deteiene la extracion SIN INCLUIR EL ELEMENTO DE ESE INDICE.SI NO SE LE COLOCA INDICE IRA HASTA EL FINAL DEL ARREGLO
         EJEMPLO: 
         Hemos definido una función, forecast, que toma un arreglo como argumento. Modifica la función usando slice() para extraer información del arreglo de argumentos
         y devuelve un nuevo arreglo que contenga los elementos warm y sunny.*/
