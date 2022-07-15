@@ -266,7 +266,7 @@ ejemplo
                 let timRegex = /tim{4}ber/i;  // si tiene mas o menos seria false
                 let result14 = timRegex.test(timStr);
                 console.log(result14) // true 
-
+        
 /*COMPROBAR PATRONES QUE PUEDEN O NO EXISTIR ?
 Se puede hacer mediante la colocacion de un signo de interrigacion (?) comprobando de 0 o 1 los elementos precedentes ante la posible existencia de patron.
 EJEMPLO:  

@@ -384,5 +384,115 @@ function sentensify(str) {
     }
     
     console.log(sentensify("May-the-force-be-with-you"));
+
+
+
+
+/*                                                      EJERCICIO PARA PARCTICAR    
+
+Rellena la función urlSlug para convertir una cadena title y devolver la versión con guiones para la URL. 
+Puedes utilizar cualquiera de los métodos vistos en esta sección y no utilices replace. Aquí están los requisitos:
+
+La entrada es una cadena con espacios y palabras, en mayúsculas y minúsculas
+
+El resultado es una cadena con los espacios entre palabras reemplazadas por un guion (-)
+
+El resultado debe contener todas las letras minúsculas
+
+El resultado no debe tener espacios
+
+ */
+function urlSlug(title) {
+    return title
+    .toLowerCase() // metodo para convertir todo a minuscula 
+    .trim() // trim elimina los espacios de inicio y fin de una cadena 
+    .split(/\s+/) // regex : si hay un espacio que se repite uno o mas veces  (regex.js linea1 128  )
+    .join("-") 
+    }
+    
+    let result = urlSlug(" Winter Is  Coming" );
+    console.log(result)
+
+    // OTRA MANERA USANDO FILTER 
+
+
+function urlSlug(title) {
+    return title
+    .toLowerCase()
+    .split(" ")
+    .filter(x => x !== "") // ME VA A FILTRAR X SI EN CADA ITERACION ES DISTINTA DE UN STRING VACIO
+    .join("-")
+    }
+    
+    let result2 = urlSlug(" Winter Is  Coming" );
+    console.log(result2) // winter-is-comming
+ 
+
+
+/*                                                      METODO EVERY                                
+
+EL METODO EVERY FUNCIONA CON ARREGLOS PARA COMPROBAR SI EL ARREGLO CUMPLE CON X CONDICION. DEVUELVE VALOR BOOLEANO 
+EJERCICIO 
+Utiliza el método every dentro de la función checkPositive para comprobar si cada elemento en arr es positivo.
+La función debe devolver un valor booleano.
+
+
+*/
+
+function checkPositive(arr) {
+    return arr.every(currentValue => currentValue > 0)
+    }
+    
+    console.log(checkPositive([1, 2, 3, -4, 5])); // false 
+    
+
+
+
+    /*                                                      METODO SOME                             
+
+EL METODO COMPRUEBA SI ALGUN ELEMENTO DE UN ARREGLO CUMPLE CIERTO CRITERIOÑ. DEVUELVE UN BOLEANO 
+
+EJERCICIO 
+
+Utiliza el método some dentro de la función checkPositive para comprobar si algún elemento en arr es positivo. 
+La función debe devolver un valor booleano.
+
+
+*/ 
+
+function checkPositive(arr) {
+    return arr.some(value => value > 0)
+    }
+    console.log(checkPositive([1, 2, 3, -4, 5]));
+
+
+
+
+
+    
+/*                                       INTRODUCCION A LA CURRIFICACION Y LA APLICACION DE FUNCIONES PARCIALES   
+
+La aridad de una función es el número de argumentos que requiere. Currificar una función significa convertir una función de N aridades a N 
+funciones de 1 aridad. 
+
+Esto es útil en tu programa si no puedes proporcionar todos los argumentos a una función al mismo tiempo. 
+
+EJERCICIO
+Completa el cuerpo de la función add para que use currificación para añadir parámetros x, y, y z.
+
+*/
+function add(x) {
+    return function y (y){
+      return function z (z){
+        return x + y + z
+      }
+    }
+  }
+  
+  console.log(add(1)(2)(3));
+
+
+
 /* */
-/* */
+
+
