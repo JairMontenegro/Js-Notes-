@@ -134,6 +134,24 @@ function whatIsInAName(collection, source) {
      });
     }  
 
+
+
+
+/*                                                      EJERCICIO 5 Spinal case   
+
+
+Convierte una cadena a spinal case. Spinal case significa todas-las-palabras-en-minúscula-unidas-por-guiones.
+ejercicio de regex 
+*/
+function spinalCase(str) {
+  let camelCaptureGroup = str.replace(/([a-z])([A-Z])/g, "$1 $2") // grupos de captura 
+  let spaceAndDashes = camelCaptureGroup.replace(/\s/g, "-")  
+  let spinalCase = spaceAndDashes.toLowerCase()
+  return spinalCase
+}
+
+console.log(spinalCase('This Is Spinal Tap'));
+
 /**/
 /**/
 /**/
