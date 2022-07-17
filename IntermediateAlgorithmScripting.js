@@ -344,7 +344,66 @@ console.log(convertHTML("Dolce & Gabbana"));
 
 
 
-/**/
+/*                                  EJERCICIO 12 SUMA TODOS LOS NUMEROS IMPARES DE FIBONACCI 
+
+Dado un entero positivo num, devuelve la suma de todos los números impares de Fibonacci que son menores o iguales a num.
+
+Los dos primeros números en la secuencia de Fibonacci son 1 y 1. Cada número adicional en la secuencia es la suma de los dos 
+números anteriores. Los seis primeros números de la secuencia de Fibonacci son 1, 1, 2, 3, 5 y 8.
+
+Por ejemplo, sumFibs(10) debe devolver 10 porque todos los números impares de Fibonacci menores o iguales a 10 son 1, 1, 3 y 5.
+
+*/
+function sumFibs(num) {
+  let firstToValues = [0,1]
+  let addOdd = 1
+  let counter = firstToValues[firstToValues.length - 2] +
+                firstToValues[firstToValues.length -1]
+  
+  while(counter <= num){
+    firstToValues.push(counter)
+    if(counter % 2 !== 0){addOdd += counter}
+  
+    counter = firstToValues[firstToValues.length - 2] +
+              firstToValues[firstToValues.length -1]
+  }          
+  
+  return addOdd
+  }
+  console.log(sumFibs(75025));
+
+
+
+
+/*                                        EJERCICIO 13  Suma todos los números primo
+Suma todos los números primos
+Un número primo es un número entero mayor que 1 con sólo dos divisores: 1 y el propio número. 
+Por ejemplo, 2 es un número primo porque sólo es divisible entre 1 y 2. Por el contrario, 4 no es primo ya que
+es divisible entre 1, 2 y 4.
+
+Reescribe sumPrimes para que devuelva la suma de todos los números primos que sean menores o iguales a num.
+
+
+*/
+function sumPrimes(num) {
+  const isPrime = num => {
+   if (num == 0 || num == 1 || num == 4) return false;
+   for (let i = 2; i < num / 2; i++) {
+     if (num % i == 0) return false;
+   }
+   return true;
+ }
+ 
+   let sum = 0;
+   for (let i = 2; i <= num; i++) {
+     if (isPrime(i))
+       sum += i;
+   }
+   return sum;
+ }
+ 
+ 
+ console.log(sumPrimes(10));// 17 
 /**/
 /**/
 /**/
