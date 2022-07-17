@@ -142,18 +142,208 @@ function whatIsInAName(collection, source) {
 
 Convierte una cadena a spinal case. Spinal case significa todas-las-palabras-en-minúscula-unidas-por-guiones.
 ejercicio de regex 
+PAGINA UTIL https://regex101.com/
 */
 function spinalCase(str) {
-  let camelCaptureGroup = str.replace(/([a-z])([A-Z])/g, "$1 $2") // grupos de captura 
-  let spaceAndDashes = camelCaptureGroup.replace(/\s/g, "-")  
+  let camelCaptureGroup = str.replace(/([a-z])([A-Z])/g, "$1 $2") // grupos de captura  regex.js linea 312 
+  let spaceAndDashes = camelCaptureGroup.replace(/\s|_/g, "-")  // agrupaciones mixtas regex.js linea 295
   let spinalCase = spaceAndDashes.toLowerCase()
   return spinalCase
 }
 
 console.log(spinalCase('This Is Spinal Tap'));
 
-/**/
-/**/
+/*                                                      EJERCICIO 6 Spinal case   
+
+Pig Latin (Latin de los cerdos)
+Pig Latin (latin de los cerdos) es una manera de alterar las palabras en inglés. Las normas son las siguientes:
+
+- Si una palabra comienza con una consonante, toma la primer consonante o grupo de consonantes, muévela al final de la palabra, y añade ay a ella.
+
+- Si una palabra comienza con una vocal, solo añade way al fina
+*/
+
+
+function translatePigLatin(str) {
+  return str.replace(/^[aeiou]\w*/, "$&way") 
+  .replace(/(^[^aeiou]+)(\w*)/, "$2$1ay");
+   
+ }
+ 
+ translatePigLatin("consonant");
+
+
+
+
+
+
+  /*                                                      EJERCICIO 7 BUSCA Y REEMPLAZA   
+
+  Busca y reemplaza
+
+  Realiza una búsqueda y reemplaza en la oración usando los argumentos proporcionados y devuelve la nueva oración.
+
+  El primer argumento es la frase sobre la que se va a realizar la búsqueda y el reemplazo.
+
+  El segundo argumento es la palabra que se reemplazará (antes).
+
+  El tercer argumento es lo que reemplazará el segundo argumento (después).
+
+  Note: Mantén la capitalización del primer carácter en la palabra original cuando lo estés reemplazando. Por ejemplo,
+  si quieres reemplazar la palabra Book por la palabra dog, debe ser reemplazada como Dog
+  */
+  function myReplace(str, before, after) { // por mas que se ve horrible  no lo es cuando se esta empezando .
+    let convert = str.split(" ") // convertimos en un arreglo de strings 
+
+    for (let i = 0 ; i < convert.length; i++){ //  iteramos entre el arreglo de string para buscar el indice del elemento pasado como argumento before 
+      if(convert[i]=== before ){// si el indice de la iteracion igual before y cumple con as siguientes condiciones. 
+        if(after[0] === after[0].toUpperCase()){ // si after en el indice 0 tiene una letra mayusiula 
+          after = after[0].toLowerCase() + after.slice(1) //la va a convertir en minuscula concatenandolo con el resto de la cadena 
+        } if(convert[i][0] === convert[i][0].toUpperCase()){ // si el elemento a convertir en el indice 0 tiene una mayuscula 
+          after = after[0].toUpperCase() + after.slice(1) // el elemento after ingresara a nuestro arreglo con letra mayusucula 
+        }
+        convert[i] = after // y si se cumplen todas estas condiciones lo que haremos es decir que nuestra palabra encontrada sera igual a after. 
+      }
+    } 
+    return convert.join(" ")  // volvemos otravez un string 
+    }
+    
+    console.log (myReplace("I think we should look up there", "up", "Down"));  // I think we should look down there
+
+
+
+/*                                                      EJERCICIO 8 EMPAREJAMEINTO DE ADN
+
+Los pares de las cadenas de ADN consisten en pares de base de proteínas. Los pares de base son representados por los caracteres
+AT y CG, que forman bloques de doble hélix ADN.
+
+A la cadena de ADN le falta el elemento de emparejamiento. Escribe una función que coincida con los pares de base faltantes 
+para la hebra de ADN proporcionada.
+Para cada carácter de la cadena proporcionada, encuentra el carácter de par base. Devuelve los resultados como un arreglo 2d.
+
+Por ejemplo, la entrada GCG, devuelve [["G", "C"], ["C","G"], ["G", "C"]]
+
+El carácter y su par se emparejan en un arreglo, y todos los arreglos se agrupan en un arreglo encapsulado.
+
+
+*/
+function pairElement(str) {
+  let pairOfBase = { // yo lo simplifique con un objeto que tenga todas las posibles combinaciones, tambien se podria hacer una sentencia switch 
+    // tambien se podria hacer una funcion aparte, lleno de sentencias if, para mi este fue el camino mas simple. 
+    "A": "T",
+    "T": "A",
+    "C": "G",
+    "G": "C"
+  }
+
+  let toArray = str.split("") // convertimos 
+
+  return toArray.map(pair => [pair, pairOfBase[pair]]) // mapeamos para que cada elemento dentro del array nos devuelve el elemento mas su par definido en el
+  //objeto
+
+  }
+console.log(pairElement("GCG")) //[ [ 'G', 'C' ], [ 'C', 'G' ], [ 'G', 'C' ] ]
+
+
+/*                                                         EJERCICIO 9 LETRAS FALTANTES
+
+
+Encuentra la letra que falta en la siguiente cadena de letras y devuélvela.
+
+Si todas las letras están presentes en la cadena, devuelve undefined.
+
+*/
+function fearNotLetter(str) {
+  let abc = "abcdefghijklmnopqrstuvwxyz" ; 
+  let startPosition = abc.indexOf(str[0])
+  for(let i = startPosition; i < startPosition + str.length ; i ++){
+    if(abc[i] != str[i-startPosition]){
+      return abc[i]
+    }
+  }
+}
+
+console.log(fearNotLetter("stvwx")); // u
+
+
+
+
+
+
+/*                                                         EJERCICIO 10 Unión ordenada
+
+Escribe una función que tome dos o más arreglos y devuelve un nuevo arreglo de valores únicos manteniendo el orden original de los arreglos proporcionados.
+
+En otras palabras, todos los valores presentes de todos los arreglos deben incluirse en su orden original, pero sin duplicados en el arreglo final.
+
+Los números únicos deben ser ordenados según su orden original, pero el arreglo final no debe ordenarse según el orden numérico.
+
+Revisa las pruebas de afirmación para ver ejemplos.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments necesario 
+
+
+
+*/
+
+function uniteUnique(arr) {
+  let args = [...arguments]
+    let newArray = []
+  for(let i = 0; i < args.length; i++){
+    for(let j = 0; j <args[i].length ;j++){
+      newArray.push(args[i][j])
+    }
+  }
+
+let filtered = newArray.filter((item, index) =>{
+  return newArray.indexOf(item) === index
+})
+
+return filtered;
+}
+
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+
+
+/*                                                         EJERCICIO 11 CONVIERTE ENTIDADES HTML 
+
+Convierte entidades HTML
+Convierte los caracteres &, <, >, " (dobles comillas), y ' (apóstrofo), en un cadena con su correspondiente entidad HTML.
+
+
+*/
+function convertHTML(str) {
+  let getArray = str.split("");
+  
+  for (let i = 0; i < getArray.length; i++) {
+    switch (getArray[i]) {
+      case "<":
+   getArray[i]= "&lt;";
+        break;
+      case "&":
+      getArray[i]= "&amp;";
+        break;
+      case ">":
+        getArray[i]= "&gt;";
+        break;
+      case '"':
+        getArray[i] = "&quot;";
+        break;
+      case "'":
+        getArray[i] = "&apos;";
+        break;
+    }
+  }
+
+   
+  return getArray.join("");
+}
+
+
+console.log(convertHTML("Dolce & Gabbana"));
+
+
+
 /**/
 /**/
 /**/
