@@ -185,7 +185,7 @@ pero al final usando el caracter de signo de dolar caracter de ancla ($) sigamos
 /*COINCIDIR TODAS LAS LETRAS Y LOS NUMEROS (\w)  equivalente a  [A-Za-z0-9_]*/
 
 /* 
-Podemos hacer coincidir todas las letras del alfabbeto y numeros con el siguiente atajo ( \w ) ejemplo: 
+Podemos hacer coincidir todas las letras del alfabeto y numeros con el siguiente atajo ( \w ) ejemplo: 
 Utilizaremos \w para contar el número de caracteres alfanuméricos en varias citas y cadenas.*/
                 let quoteSample5 = "The five boxing wizards jump quickly.";
                 let alphabetRegexV2 = /\w/g; // recordar repeticiones 

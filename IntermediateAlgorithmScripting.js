@@ -578,11 +578,14 @@ function addTogether() {
   let [firstArgument, secondArgument] = arguments
   
   
-  if(typeof firstArgument !=="number"){
+  if(typeof(firstArgument) !=="number"){
     return undefined
-  }else if(secondArgument === undefined){
-      function addSecondArgument (second){
-      if(typeof second !=="number"){
+  }
+  
+  else if(secondArgument === undefined){
+      function addSecondArgument (secondArgument){
+
+      if(typeof(secondArgument) !=="number"){
         return undefined 
       }else{
         return firstArgument + secondArgument
@@ -590,16 +593,59 @@ function addTogether() {
     }
     return addSecondArgument
   }
-    if(typeof secondArgument !== "number"){
+    if(typeof(secondArgument) !== "number"){
         return undefined
   }else {
   return firstArgument + secondArgument
       }
   }
   
-  console.log(addTogether(5)(2));
+  console.log(addTogether(5)(7));
 
-/**/
+/*                                              EJERCICIO 20 CREA UNA PERSONA 
+
+
+Completa el constructor de objetos con los siguientes métodos:
+
+getFirstName()
+getLastName()
+getFullName()
+setFirstName(first)
+setLastName(last)
+setFullName(firstAndLast)
+
+Ejecuta las pruebas para ver el resultado esperado para cada método. Los métodos que toman un argumento deben aceptar sólo un argumento
+y tiene que ser una cadena. Estos métodos deben ser el único medio disponible para interactuar con el objeto.
+
+IMPORTANTE https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures
+*/
+
+const Person = function(firstAndLast) {
+ 
+  this.getFullName = function() {
+    return firstAndLast;
+  };
+  this.getFirstName = () =>{
+    return  firstAndLast.split(" ")[0]
+  }
+  this.getLastName = () => {
+    return firstAndLast.split(" ")[1]
+  }
+ this.setFullName = (newFullName)=>{ 
+    return firstAndLast = newFullName
+ }
+  this.setFirstName = (newFirstName)=>{ 
+    return firstAndLast = newFirstName + " " + this.getLastName()
+ }
+  this.setLastName = (newLastName)=>{ 
+    return firstAndLast = this.getFirstName() + " " + newLastName 
+ }
+};
+
+const bob = new Person('Bob Ross');
+let result = bob.getFullName();
+console.log(result) // Bob Ross
+console.log(Object.keys(bob).length)  // 6
 /**/
 /**/
 /**/
