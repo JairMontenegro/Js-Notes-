@@ -61,7 +61,7 @@ function diffArray(arr1, arr2) {
     }
   compareArrays(arr1 ,arr2)
   compareArrays(arr2 ,arr1)
-   return newArr;
+    return newArr;
   }
   
   console.log(diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], 
@@ -131,7 +131,7 @@ function whatIsInAName(collection, source) {
   
     return collection.filter(find =>{
     return getKey.every(key => find.hasOwnProperty(key)&& find[key] === source[key]) 
-     });
+    });
     }  
 
 
@@ -387,22 +387,21 @@ Reescribe sumPrimes para que devuelva la suma de todos los números primos que s
 */
 function sumPrimes(num) {
   const isPrime = num => {
-   if (num == 0 || num == 1 || num == 4) return false;
-   for (let i = 2; i < num / 2; i++) {
-     if (num % i == 0) return false;
-   }
-   return true;
+    if (num == 0 || num == 1 || num == 4) return false;
+    for (let i = 2; i < num / 2; i++) {
+    if (num % i == 0) return false;
+  }
+    return true;
+  }
+
+    let sum = 0;
+    for (let i = 2; i <= num; i++) {
+    if (isPrime(i))
+      sum += i;
+  }
+  return sum;
  }
- 
-   let sum = 0;
-   for (let i = 2; i <= num; i++) {
-     if (isPrime(i))
-       sum += i;
-   }
-   return sum;
- }
- 
- 
+
  console.log(sumPrimes(10));// 17 
 
 
@@ -521,9 +520,85 @@ console.log(steamrollArray([1, [2], [3, [[4]]]])); //[ 1, 2, 3, 4 ]
 steamrollArray([1, [2], [3, [[4]]]]);
 
  
-/**/
-/**/
-/**/
+/*                                              EJERCICIO 17  AGENTES BINARIOS
+  
+Devuelve una frase traducida al inglés de una cadena binaria pasada.
+
+La cadena binaria estará separada por espacios.
+*/
+
+function binaryAgent(str) {
+  let getArray = str.split(" ")
+  let translate = []
+  getArray.map(elem => {
+  let parsear = parseInt( elem , 2 )
+  let charCode = String.fromCharCode(parsear)
+  translate.push(charCode)
+  })
+  
+  return translate.join("")
+    
+  }
+  console.log(binaryAgent("01001001 00100000 01101100 01101111 01110110 01100101 00100000 01000110 01110010 01100101 01100101 01000011 01101111 01100100 01100101 01000011 01100001 01101101 01110000 00100001"));
+// I love FreeCodeCamp!
+
+
+
+
+
+/*                                          EJERCICIO   18  TODO SEA VERDAD
+
+Comprueba si el predicado (segundo argumento) es truthy en todos los elementos de una colección (primer argumento).
+ En otras palabras, se te da una 
+colección de arreglos de objetos. El predicado pre será una propiedad del objeto y  debe devolver true si su valor es 
+truthy. De lo contrario, devuelve false.
+
+
+*/
+
+function truthCheck(collection, pre) {
+  return  collection.every(dataPoint => dataPoint[pre])
+  
+  
+  }
+   truthCheck(
+    [
+      {name: "Quincy", role: "Founder", isBot: false},
+      {name: "Naomi", role: "", isBot: false},
+      {name: "Camperbot", role: "Bot", isBot: true}
+      ], "isBot");
+  
+  
+/*                                                    EJERCICIO 19 ARGUMENTOS OPCIONALES 
+
+Crea una función que sume dos argumentos. Si sólo se proporciona un argumento, entonces devuelve una función que espera un argumento y devuelve la suma.
+
+Por ejemplo, addTogether(2, 3) debe devolver 5 y addTogether(2) debe devolver una función.*/
+function addTogether() {
+  let [firstArgument, secondArgument] = arguments
+  
+  
+  if(typeof firstArgument !=="number"){
+    return undefined
+  }else if(secondArgument === undefined){
+      function addSecondArgument (second){
+      if(typeof second !=="number"){
+        return undefined 
+      }else{
+        return firstArgument + secondArgument
+      }
+    }
+    return addSecondArgument
+  }
+    if(typeof secondArgument !== "number"){
+        return undefined
+  }else {
+  return firstArgument + secondArgument
+      }
+  }
+  
+  console.log(addTogether(5)(2));
+
 /**/
 /**/
 /**/
