@@ -375,7 +375,7 @@ function sumFibs(num) {
 
 
 
-/*                                        EJERCICIO 13  Suma todos los números primo
+/*                                        EJERCICIO 13  SUMA TODOS LOS NUMEROS PRIMOS
 Suma todos los números primos
 Un número primo es un número entero mayor que 1 con sólo dos divisores: 1 y el propio número. 
 Por ejemplo, 2 es un número primo porque sólo es divisible entre 1 y 2. Por el contrario, 4 no es primo ya que
@@ -404,6 +404,128 @@ function sumPrimes(num) {
  
  
  console.log(sumPrimes(10));// 17 
+
+
+
+ 
+/*                                                        EJERCICIO 14 MINIMO COMUN MULTIPLO 
+
+Encuentra el múltiplo común más pequeño de los parámetros proporcionados que pueden dividirse equitativamente por ambos, 
+así como por todos los números consecutivos del rango entre estos parámetros.
+
+El rango será un arreglo de dos números que no necesariamente estarán en orden numérico.
+
+Por ejemplo, si se dan 1 y 3, encuentra el múltiplo común más pequeño de 1 y 3 que también es dividido por todos los números
+entre 1 y 3. La respuesta sería 6.
+*/
+function smallestCommons(arr) {
+  let lowNum = Math.min(...arr);
+  let highNum = Math.max(...arr);
+
+
+
+let range = getRange(lowNum, highNum) 
+
+let multiply = 1;
+
+while (multiply < 10000000){
+  let higherCommonMult = (lowNum * multiply) * highNum;
+  let trueCount = 0;
+  for(let i = 0; i < range.length; i ++){
+    if(higherCommonMult % range[i]===0){
+      trueCount +=1
+      if(trueCount === range.length){
+        return higherCommonMult
+      }
+    }
+  }
+  multiply +=1 
+
+}
+
+return arr
+}
+
+
+let getRange = (lowN,highN) => {
+let result = []; 
+for (let i = lowN ; i <= highN; i++){
+  result.push(i)
+}
+return result
+}
+
+
+console.log(smallestCommons([1,5]));
+
+
+/*                                                          EJERCICIO 15 DEJALO CAER
+
+Dado el arreglo arr, itera y elimina cada elemento comenzando desde el primer elemento (el índice 0) 
+hasta que la función func devuelva true cuando el elemento iterado se pasa a través de él.
+
+Luego devuelve el resto del arreglo una vez que se cumpla la condición, de lo contrario, arr debe devolverse como un arreglo vacío.
+
+
+*/
+function dropElements(arr, func) {
+  for (let i = 0; i < arr.length; i++){
+    if(func(arr[i])===true){
+      return arr.slice(i)
+    }
+  }
+  return []
+}
+
+console.log(dropElements([1, 2, 3, 4], function(n) {return n < 3; }));// 3,4
+
+
+
+
+
+
+/*                                                         EJERCICIO 16 APLANADORA
+
+Aplana un arreglo anidado. Debes tener en cuenta los diferentes niveles de anidación.
+tambien se podria pensar algo con esto 
+
+*/
+
+
+function steamrollArray(arr) {
+  let newArray = []
+ arr.forEach(array =>{
+ if(Array.isArray(array)){
+     newArray.push(...steamrollArray(array)) //RECURSIVIDAD
+   }else{
+     newArray.push(array) // si no es un arrglo nos lo mandara al nuevo arreglo que creamos 
+   }
+ })
+ return newArray
+   
+ }
+ 
+console.log(steamrollArray([1, [2], [3, [[4]]]])); //[ 1, 2, 3, 4 ]
+ 
+
+
+ // Array.isArrat(arr) // nos devuelve true or false si el elemnto que esta dentro de parentecis es un arreglo 
+
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat Array.prototype.flat()
+
+ function steamrollArray(arr) {
+  const flat = [].concat(...arr);
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat;
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
+
+ 
+/**/
+/**/
+/**/
+/**/
+/**/
 /**/
 /**/
 /**/
