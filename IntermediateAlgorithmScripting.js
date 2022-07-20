@@ -645,8 +645,72 @@ const Person = function(firstAndLast) {
 const bob = new Person('Bob Ross');
 let result = bob.getFullName();
 console.log(result) // Bob Ross
-console.log(Object.keys(bob).length)  // 6
-/**/
-/**/
+console.log(Object.keys(bob).length)  // 6    
+
+
+
+/*                                                            EJERCICIO         MAP DEBRIS 
+
+
+De acuerdo con la Tercera Ley de Kepler, el período orbital  T  de dos puntos se orbitan mutuamente en una órbita circular
+
+a  es el eje semi-mayor de la órbita
+μ=GM  es el parámetro gravitatorio estándar
+G  es la constante gravitatoria,
+M  es la masa del cuerpo más masivo.
+Devuelve un nuevo arreglo que transforma la altitud media de los elementos en sus periodos orbitales (en segundos).
+
+El arreglo contendrá objetos en el formato {name: 'name', avgAlt: avgAlt}.
+
+Los valores deben redondearse al número entero más cercano. El cuerpo orbitado es la Tierra.
+
+El radio de la tierra es de, 6367.4447 kilómetros y el valor GM de la tierra es de, 398600.4418 km3s-2.
+
+
+ES EL EJERCICIO MAS DIFICIL DE FREECODECAMP DE JAVASCRIPT
+*/
+
+
+function orbitalPeriod(arr) {
+  const GM = 398600.4418;
+  const earthRadius = 6367.4447;
+
+  let result = []
+
+  arr.forEach(dataPoint => {
+  let transform = {};  
+  // formula 
+  // varliables 
+  let twoDotPy = Math.PI * 2
+  let dividend = (earthRadius + dataPoint.avgAlt) ** 3; 
+
+    // to execute 
+  let toSquareNumber = dividend / GM
+  let squareResult = Math.sqrt(toSquareNumber) 
+  let toRound= twoDotPy * squareResult
+  let orbitalPeriod = Math.round(toRound)
+
+    //data object
+  transform["name"] = dataPoint.name
+  transform["orbitalPeriod"] = orbitalPeriod
+  result.push(transform)
+  })
+  
+  return result;
+}
+
+let test = orbitalPeriod([
+{name: "iss", avgAlt: 413.6}, 
+{name: "hubble", avgAlt: 556.7},
+{name: "moon", avgAlt: 378632.553}])
+
+console.log(test) /*
+[ { name: 'iss', orbitalPeriod: 5557 },
+  { name: 'hubble', orbitalPeriod: 5734 },
+  { name: 'moon', orbitalPeriod: 2377399 } ]*/
+
+
+
+
 /**/
 /**/
